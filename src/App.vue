@@ -1,10 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <main-container />
 </template>
+
+<script lang="ts">
+import MainContainer from "./views/MainContainer.vue";
+
+export default {
+  name: "App",
+  components: {
+    MainContainer,
+  },
+};
+</script>
+
 
 <style>
 #app {
