@@ -1,5 +1,7 @@
 <template>
-  <main-container />
+  <div id="nav"></div>
+  <el-button>Кнопка</el-button>
+  <router-view />
 </template>
 
 <script lang="ts">
