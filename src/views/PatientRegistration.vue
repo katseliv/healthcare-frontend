@@ -1,35 +1,46 @@
 <template>
   <el-form
-    ref="form"
-    :model="form"
+    ref="patientRegistration"
+    :model="patientRegistration"
     label-width="120px"
     label-position="top"
     size="medium"
+    class="form"
   >
-    <el-form-item label="Имя">
-      <el-input v-model="form.name"></el-input>
+    <h2>Регистрация</h2>
+    <el-form-item label="Имя" required>
+      <el-input v-model="patientRegistration.name"></el-input>
     </el-form-item>
-    <el-form-item label="Фамилия">
-      <el-input v-model="form.surname"></el-input>
+    <el-form-item label="Фамилия" required>
+      <el-input v-model="patientRegistration.surname"></el-input>
     </el-form-item>
-    <el-form-item label="Отчество">
-      <el-input v-model="form.parentName"></el-input>
+    <el-form-item label="Отчество" required>
+      <el-input v-model="patientRegistration.parentName"></el-input>
     </el-form-item>
-    <el-form-item label="Пол">
-      <el-radio-group v-model="form.sex">
+    <el-form-item label="Пол" required>
+      <el-radio-group v-model="patientRegistration.sex">
         <el-radio model-value="male" label="Мужской"></el-radio>
         <br />
         <el-radio model-value="female" label="Женский"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="E-mail">
-      <el-input v-model="form.eMail"></el-input>
+    <el-form-item label="Возраст">
+      <el-input type="number" v-model="patientRegistration.age"></el-input>
     </el-form-item>
-    <el-form-item label="Пароль">
-      <el-input v-model="form.password"></el-input>
+    <el-form-item label="E-mail" required>
+      <el-input type="email" v-model="patientRegistration.eMail"></el-input>
     </el-form-item>
-    <el-form-item label="Повторите пароль">
-      <el-input v-model="form.passwordConfirmation"></el-input>
+    <el-form-item label="Пароль" required>
+      <el-input
+        type="password"
+        v-model="patientRegistration.password"
+      ></el-input>
+    </el-form-item>
+    <el-form-item label="Повторите пароль" required>
+      <el-input
+        type="password"
+        v-model="patientRegistration.passwordConfirmation"
+      ></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Подтвердить</el-button>
@@ -41,12 +52,13 @@
 export default {
   data() {
     return {
-      form: {
+      patientRegistration: {
         name: "",
         surname: "",
         parentName: "",
         sex: "",
         eMail: "",
+        age: "",
         password: "",
         passwordСonfirmation: "",
       },
@@ -54,11 +66,21 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
+      console.log(this.patientRegistration);
     },
   },
 };
 </script>
 
-<style scoped>
+<style lang="css" scoped>
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+@media (max-width: 576px) {
+  .form {
+    padding: 0 10px;
+  }
+}
 </style>
