@@ -1,6 +1,7 @@
 <template>
   <div id="nav"></div>
   <el-button>Кнопка</el-button>
+  <main-container />
   <router-view />
 </template>
 
