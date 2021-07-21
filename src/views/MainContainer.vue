@@ -9,17 +9,12 @@
       </el-menu-item>
     </el-menu>
   </div>
-  <PatientRegistration />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PatientRegistration from "./PatientRegistration.vue";
 
 export default defineComponent({
   name: "MainContainer",
-  components: {
-    PatientRegistration,
-  },
 });
 </script>
