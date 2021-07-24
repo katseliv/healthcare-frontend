@@ -19,9 +19,9 @@
     </el-form-item>
     <el-form-item label="Пол" required>
       <el-radio-group v-model="patientRegistration.sex">
-        <el-radio model-value="male" label="Мужской"></el-radio>
+        <el-radio label="male">Мужский</el-radio>
         <br />
-        <el-radio model-value="female" label="Женский"></el-radio>
+        <el-radio label="female">Женский</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="Возраст">
