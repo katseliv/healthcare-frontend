@@ -34,16 +34,23 @@
     </el-form-item>
 
     <div v-if="registration.userType === 'doctor'">
+      <h4>Специальности</h4>
       <el-form-item
         v-for="(speciality, i) in registration.doctorInputs.specialities"
         v-bind:key="speciality.id"
         type="text"
-        label="Специальность"
+        :label="'Специальность ' + (i + 1)"
       >
         <el-input
           type="text"
           v-model="registration.doctorInputs.specialities[i]"
         ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="addSpeciality">+</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="removeSpeciality">-</el-button>
       </el-form-item>
     </div>
 
@@ -53,7 +60,6 @@
         <el-radio label="doctor">Доктор</el-radio>
       </el-radio-group>
     </el-form-item>
-
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Подтвердить</el-button>
     </el-form-item>
@@ -88,6 +94,9 @@ export default {
     },
     addSpeciality() {
       this.registration.doctorInputs.specialities.push("");
+    },
+    removeSpeciality() {
+      this.registration.doctorInputs.specialities.pop("");
     },
   },
 };
