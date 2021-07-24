@@ -1,4 +1,4 @@
-# healthcare_main
+# healthcare_frontend
 
 ## Project setup
 ```
