@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <slot></slot>
-  </div>
+  <div>Главная страница</div>
 </template>
 
 <script lang="ts">

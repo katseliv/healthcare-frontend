@@ -1,14 +1,5 @@
 <template>
-  <div>
-    <el-menu mode="horizontal" class="main-menu" :router="routerMode">
-      <el-menu-item index="/login"> Login </el-menu-item>
-      <el-menu-item index="/registration"> Registration </el-menu-item>
-      <el-menu-item index="/admin/registration">
-        Admin registration
-      </el-menu-item>
-    </el-menu>
-  </div>
-  <MainContainer><router-view /></MainContainer>
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -16,14 +7,6 @@ import MainContainer from "./views/MainContainer.vue";
 
 export default {
   name: "App",
-  components: {
-    MainContainer,
-  },
-  data() {
-    return {
-      routerMode: true,
-    };
-  },
 };
 </script>
 

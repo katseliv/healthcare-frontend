@@ -1,27 +1,44 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteLocation, RouteRecordRaw } from "vue-router";
 
-import Login from "../views/Login.vue"
-import PatientRegistration from "../views/PatientRegistration.vue"
-import AdminRegistration from "../views/AdminRegistration.vue"
+import AuthorizationPage from "../views/AuthorizationPage.vue"
+import Login from "../components/Login.vue"
+import PatientRegistration from "../components/PatientRegistration.vue"
+import AdminRegistration from "../components/AdminRegistration.vue"
+import MainContainer from "../views/MainContainer.vue"
+import authGuard from "./guards/auth-guard";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/login',
-    component: Login
+    path: '/portal',
+    name: 'portal',
+    component: MainContainer,
+    beforeEnter: authGuard
   },
   {
-    path: '/registration',
-    component: PatientRegistration
-  },
-  {
-    path: '/admin',
-    component: AdminRegistration,
+    path: '/authorization',
+    name: '/authorization',
+    component: AuthorizationPage,
+    redirect: (to: RouteLocation) => {
+      return `${to.path}/login`;
+    },
     children: [
       {
+        path: 'login',
+        component: Login
+      },
+      {
         path: 'registration',
-        component: AdminRegistration
-      }
+        component: PatientRegistration
+      },
+      {
+        path: 'admin',
+        component: AdminRegistration,
+      },
     ]
+  },
+  {
+    path: '/',
+    redirect: '/authorization'
   }
 ];
 

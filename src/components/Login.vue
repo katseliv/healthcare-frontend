@@ -65,9 +65,6 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      if (this.loginData.username === "" || this.loginData.password === "") {
-        alert("Ошибка ввода"); // прикрутить валидацию
-      }
       console.log(this.loginData);
     },
     setRememberMe() {
