@@ -3,8 +3,6 @@
 </template>
 
 <script lang="ts">
-import MainContainer from "./views/MainContainer.vue";
-
 export default {
   name: "App",
 };

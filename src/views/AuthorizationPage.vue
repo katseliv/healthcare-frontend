@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <header>
     <el-menu
       mode="horizontal"
       class="main-menu"
@@ -14,8 +14,8 @@
         Admin registration
       </el-menu-item>
     </el-menu>
-  </div>
-  <router-view />
+  </header>
+  <main><router-view /></main>
 </template>
 
 <script lang="ts">
