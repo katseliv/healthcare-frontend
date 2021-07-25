@@ -4,7 +4,7 @@ import AuthorizationPage from "../views/AuthorizationPage.vue"
 import Login from "../components/Login.vue"
 import PatientRegistration from "../components/PatientRegistration.vue"
 import AdminRegistration from "../components/AdminRegistration.vue"
-import Portal from "../views/MainContainer.vue"
+import Portal from "../views/Portal.vue"
 import authGuard from "./guards/auth-guard";
 import MainScreen from "../components/MainScreen.vue"
 

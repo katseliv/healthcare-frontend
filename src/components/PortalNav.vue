@@ -3,7 +3,7 @@
     mode="horizontal"
     class="main-menu"
     :router="routerMode"
-    default-active="/authorization/login"
+    default-active="/portal/main-screen"
   >
     <el-menu-item index="/portal/main-screen"> Main Screen </el-menu-item>
   </el-menu>

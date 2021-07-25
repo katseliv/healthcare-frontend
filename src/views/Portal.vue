@@ -11,7 +11,7 @@
 import { defineComponent } from "vue";
 import PortalNav from "../components/PortalNav.vue";
 export default defineComponent({
-  name: "MainContainer",
+  name: "Portal",
   components: {
     PortalNav,
   },
