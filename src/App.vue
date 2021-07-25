@@ -1,14 +1,10 @@
 <template>
   <div>
-    <el-menu mode="horizontal" class="main-menu">
-      <el-menu-item index="1">
-        <router-link to="/login">Login</router-link>
-      </el-menu-item>
-      <el-menu-item index="2">
-        <router-link to="/registration">Registration</router-link>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <router-link to="/admin/registration">adminRegistration</router-link>
+    <el-menu mode="horizontal" class="main-menu" :router="routerMode">
+      <el-menu-item index="/login"> Login </el-menu-item>
+      <el-menu-item index="/registration"> Registration </el-menu-item>
+      <el-menu-item index="/admin/registration">
+        Admin registration
       </el-menu-item>
     </el-menu>
   </div>
@@ -22,6 +18,11 @@ export default {
   name: "App",
   components: {
     MainContainer,
+  },
+  data() {
+    return {
+      routerMode: true,
+    };
   },
 };
 </script>
