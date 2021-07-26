@@ -19,7 +19,7 @@
         >Role</el-tab-pane
       >
       <el-tab-pane class="profile__tab" label="Settings" name="fourth">
-        <PatientSettings />
+        <PatientProfileSettings />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PatientSettings from "../components/PatientSettings.vue";
+import PatientProfileSettings from "../components/PatientProfileSettings.vue";
 
 export default defineComponent({
   data() {
@@ -44,7 +44,7 @@ export default defineComponent({
     };
   },
   components: {
-    PatientSettings,
+    PatientProfileSettings,
   },
 });
 </script>
