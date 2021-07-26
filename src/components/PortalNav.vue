@@ -6,6 +6,7 @@
     default-active="/portal/main-screen"
   >
     <el-menu-item index="/portal/main-screen"> Main Screen </el-menu-item>
+    <el-menu-item index="/portal/profile"> Profile </el-menu-item>
   </el-menu>
 </template>
 

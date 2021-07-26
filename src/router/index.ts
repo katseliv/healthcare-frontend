@@ -5,19 +5,28 @@ import Login from "../components/Login.vue"
 import PatientRegistration from "../components/PatientRegistration.vue"
 import AdminRegistration from "../components/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
-import authGuard from "./guards/auth-guard";
 import MainScreen from "../components/MainScreen.vue"
+import Profile from "../views/Profile.vue"
+
+import authGuard from "./guards/auth-guard";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/portal',
     name: 'portal',
     component: Portal,
+    redirect: (to: RouteLocation) => {
+      return `${to.path}/main-screen`;
+    },
     // beforeEnter: authGuard
     children: [
       {
         path: 'main-screen',
         component: MainScreen
+      },
+      {
+        path: 'profile',
+        component: Profile
       }
     ]
   },

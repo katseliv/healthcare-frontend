@@ -1,10 +1,10 @@
 <template>
-  <header>
+  <el-header>
     <PortalNav />
-  </header>
-  <main>
+  </el-header>
+  <el-main>
     <router-view />
-  </main>
+  </el-main>
 </template>
 
 <script lang="ts">
