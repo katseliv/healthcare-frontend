@@ -2,31 +2,32 @@
   <el-form
     ref="registration"
     :model="registration"
+    :rules="rules"
     label-width="120px"
     label-position="top"
     size="medium"
     class="form"
   >
     <h2>Регистрация администраторов и докторов</h2>
-    <el-form-item label="Имя" required>
+    <el-form-item label="Имя" prop="name">
       <el-input v-model="registration.userData.name"></el-input>
     </el-form-item>
-    <el-form-item label="Фамилия" required>
+    <el-form-item label="Фамилия" prop="surname">
       <el-input v-model="registration.userData.surname"></el-input>
     </el-form-item>
-    <el-form-item label="Отчество" required>
+    <el-form-item label="Отчество" prop="parentName">
       <el-input v-model="registration.userData.parentName"></el-input>
     </el-form-item>
-    <el-form-item label="E-mail" required>
+    <el-form-item label="E-mail" prop="eMail">
       <el-input type="email" v-model="registration.userData.eMail"></el-input>
     </el-form-item>
-    <el-form-item label="Пароль" required>
+    <el-form-item label="Пароль" prop="password">
       <el-input
         type="password"
         v-model="registration.userData.password"
       ></el-input>
     </el-form-item>
-    <el-form-item label="Повторите пароль" required>
+    <el-form-item label="Повторите пароль" prop="passwordConfirmation">
       <el-input
         type="password"
         v-model="registration.userData.passwordConfirmation"
@@ -40,6 +41,7 @@
         v-bind:key="speciality.id"
         type="text"
         :label="'Специальность ' + (i + 1)"
+        prop="speciality"
       >
         <el-input
           type="text"
@@ -54,7 +56,7 @@
       </el-form-item>
     </div>
 
-    <el-form-item label="Тип пользователя">
+    <el-form-item label="Тип пользователя" prop="userType">
       <el-radio-group v-model="registration.userType">
         <el-radio label="admin">Админ</el-radio>
         <el-radio label="doctor">Доктор</el-radio>
@@ -85,6 +87,64 @@ export default {
           exp: "",
           specialities: [""],
         },
+      },
+      rules: {
+        name: [
+          {
+            required: true,
+            message: "Введите ваше имя",
+            trigger: "blur",
+          },
+        ],
+        surname: [
+          {
+            required: true,
+            message: "Введите вашу фамилию",
+            trigger: "blur",
+          },
+        ],
+        parentName: [
+          {
+            required: false,
+            message: "Введите ваше отчество",
+            trigger: "blur",
+          },
+        ],
+        eMail: [
+          {
+            required: true,
+            message: "Введите ваш e-mail",
+            trigger: "blur",
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: "Введите ваш пароль",
+            trigger: "blur",
+          },
+        ],
+        passwordConfirmation: [
+          {
+            required: true,
+            message: "Повторите ваш пароль",
+            trigger: "blur",
+          },
+        ],
+        userType: [
+          {
+            required: true,
+            message: "Выберите тип пользователя",
+            trigger: "blur",
+          },
+        ],
+        speciality: [
+          {
+            required: true,
+            message: "Ввдите специальность",
+            trigger: "blur",
+          },
+        ],
       },
     };
   },
