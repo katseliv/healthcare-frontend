@@ -9,11 +9,7 @@
       <p><span>Email:</span> {{ eMail }}</p>
       <p><span>Age:</span> {{ age }}</p>
     </div>
-    <el-tabs
-      class="profile__tabs"
-      v-model="activeName"
-      @tab-click="handleClick"
-    >
+    <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Visits" name="first">
       </el-tab-pane>
       <el-tab-pane class="profile__tab" label="Diseases" name="second"
@@ -22,15 +18,16 @@
       <el-tab-pane class="profile__tab" label="Allergies" name="third"
         >Role</el-tab-pane
       >
-      <el-tab-pane class="profile__tab" label="Settings" name="fourth"
-        >Settings</el-tab-pane
-      >
+      <el-tab-pane class="profile__tab" label="Settings" name="fourth">
+        <PatientSettings />
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import PatientSettings from "../components/PatientSettings.vue";
 
 export default defineComponent({
   data() {
@@ -45,6 +42,9 @@ export default defineComponent({
       eMail: "man@florida.com",
       age: "35",
     };
+  },
+  components: {
+    PatientSettings,
   },
 });
 </script>
