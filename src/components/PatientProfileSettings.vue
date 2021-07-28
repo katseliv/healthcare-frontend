@@ -47,7 +47,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PatentSettings from "@/models/pateinetSettings.model";
 import PatientSettings from "@/models/pateinetSettings.model";
 
 export default defineComponent({

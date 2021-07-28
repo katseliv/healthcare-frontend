@@ -6,15 +6,16 @@
       </el-avatar>
       <h4>{{ patient.surname }} {{ patient.name }} {{ patient.parentName }}</h4>
       <p><span>Sex:</span> {{ patient.sex }}</p>
-      <p><span>Email:</span> {{ patient.eMail }}</p>
+      <p><span>Email:</span> {{ patient.eMailc }}</p>
       <p><span>Age:</span> {{ patient.age }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Visits" name="first">
+        <Visits />
       </el-tab-pane>
       <el-tab-pane class="profile__tab" label="Diseases" name="second"
-        >Config</el-tab-pane
-      >
+        ><Diseases
+      /></el-tab-pane>
       <el-tab-pane class="profile__tab" label="Allergies" name="third">
         <Allergies />
       </el-tab-pane>
@@ -30,6 +31,8 @@ import Patient from "@/models/patient.model";
 import { defineComponent } from "vue";
 import PatientProfileSettings from "../components/PatientProfileSettings.vue";
 import Allergies from "../components/Allergies.vue";
+import Diseases from "../components/Diseases.vue";
+import Visits from "../components/Visits.vue";
 
 export default defineComponent({
   data() {
@@ -50,6 +53,8 @@ export default defineComponent({
   components: {
     PatientProfileSettings,
     Allergies,
+    Diseases,
+    Visits,
   },
 });
 </script>

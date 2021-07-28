@@ -1,9 +1,9 @@
 <template>
-  <el-scrollbar height="300px" class="el-scollbar">
-    <p class="item" :key="allergy.id" v-for="(allergy, i) in allergies">
-      <span>{{ i + 1 }} )</span> {{ allergy.description }}
-    </p>
-  </el-scrollbar>
+  <el-table :data="allergies" style="width: 100%">
+    <el-table-column type="index" label="№" min-width="50"> </el-table-column>
+    <el-table-column prop="description" label="Description" min-width="200">
+    </el-table-column>
+  </el-table>
 </template>
 
 <script lang="ts">
@@ -18,7 +18,7 @@ export default defineComponent({
           description: "Аллергия на аллергиков",
         },
         {
-          description: "Аллергия на аллергиков",
+          description: "Аллергия на католиков",
         },
       ] as Allergy[],
     };
@@ -27,9 +27,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-span {
-  font-weight: bold;
-  margin-right: 15px;
-}
 </style>
 
