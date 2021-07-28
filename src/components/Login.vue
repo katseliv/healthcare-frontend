@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 <template>
   <el-form
-    ref="loginData"
-    :model="loginData"
+    ref="formData"
+    :model="formData"
     :rules="rules"
     label-width="120px"
     label-position="top"
@@ -13,38 +14,35 @@
       <el-input
         name="username"
         type="text"
-        v-model="loginData.username"
+        v-model="formData.username"
       ></el-input>
     </el-form-item>
     <el-form-item prop="password" label="Пароль">
       <el-input
         name="password"
         type="password"
-        v-model="loginData.password"
+        v-model="formData.password"
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-checkbox @click="setRememberMe" v-model="loginData.rememberMe"
+      <el-checkbox @click="setRememberMe"
         >Запомнить меня</el-checkbox
       >
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Войти</el-button>
     </el-form-item>
+    <el-alert v-if="error" title="Неверный логин или пароль" type="error"/>
   </el-form>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
   data() {
     return {
-      loginData: {
-        username: "",
-        password: "",
-        rememberMe: false,
-      },
       rules: {
         username: [
           {
@@ -65,12 +63,15 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      console.log(this.loginData);
+      this.$store.dispatch('login', this.formData);
     },
     setRememberMe() {
       this.rememberMe = !this.rememberMe;
     },
   },
+  computed: {
+    ...mapState(['formData', 'error'])
+  }
 });
 </script>
 
