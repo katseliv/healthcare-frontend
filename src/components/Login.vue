@@ -25,7 +25,7 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-checkbox @click="setRememberMe"
+      <el-checkbox @click="setRememberMe" v-model="formData.rememberMe"
         >Запомнить меня</el-checkbox
       >
     </el-form-item>

@@ -6,7 +6,8 @@ export default createStore({
   state: {
     formData: {
       username: "",
-      password: ""
+      password: "",
+      rememberMe: false
     },
     error: ""
   },
