@@ -15,9 +15,9 @@
       <el-tab-pane class="profile__tab" label="Diseases" name="second"
         >Config</el-tab-pane
       >
-      <el-tab-pane class="profile__tab" label="Allergies" name="third"
-        >Role</el-tab-pane
-      >
+      <el-tab-pane class="profile__tab" label="Allergies" name="third">
+        <Allergies />
+      </el-tab-pane>
       <el-tab-pane class="profile__tab" label="Settings" name="fourth">
         <PatientProfileSettings />
       </el-tab-pane>
@@ -29,6 +29,7 @@
 import Patient from "@/models/patient.model";
 import { defineComponent } from "vue";
 import PatientProfileSettings from "../components/PatientProfileSettings.vue";
+import Allergies from "../components/Allergies.vue";
 
 export default defineComponent({
   data() {
@@ -48,6 +49,7 @@ export default defineComponent({
   },
   components: {
     PatientProfileSettings,
+    Allergies,
   },
 });
 </script>
