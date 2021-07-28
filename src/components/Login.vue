@@ -13,7 +13,7 @@
       <el-input
         name="username"
         type="text"
-        v-model="loginData.username"
+        v-model="loginData.eMail"
       ></el-input>
     </el-form-item>
     <el-form-item prop="password" label="Пароль">
@@ -24,9 +24,7 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-checkbox @click="setRememberMe" v-model="loginData.rememberMe"
-        >Запомнить меня</el-checkbox
-      >
+      <el-checkbox v-model="loginData.rememberMe">Запомнить меня</el-checkbox>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Войти</el-button>
@@ -34,17 +32,16 @@
   </el-form>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
+import Auth from "@/models/auth.model";
 
 export default defineComponent({
   data() {
     return {
       loginData: {
-        username: "",
-        password: "",
         rememberMe: false,
-      },
+      } as Auth,
       rules: {
         username: [
           {
@@ -66,9 +63,6 @@ export default defineComponent({
   methods: {
     onSubmit() {
       console.log(this.loginData);
-    },
-    setRememberMe() {
-      this.rememberMe = !this.rememberMe;
     },
   },
 });

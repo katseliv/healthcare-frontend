@@ -49,20 +49,15 @@
   </el-form>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+import PatientReg from "@/models/patientReg.model";
+
+export default defineComponent({
   data() {
     return {
       patientRegistration: {
-        name: "",
-        surname: "",
-        parentName: "",
-        sex: "",
-        eMail: "",
-        age: "",
-        password: "",
-        passwordСonfirmation: "",
-      },
+      } as PatientReg,
       rules: {
         name: [
           {
@@ -128,7 +123,7 @@ export default {
       console.log(this.patientRegistration);
     },
   },
-};
+});
 </script>
 
 <style lang="css" scoped>

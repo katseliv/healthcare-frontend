@@ -1,5 +1,5 @@
 interface EntityModel {
-  id: number
+  id: number | undefined
 }
 
 export default EntityModel;

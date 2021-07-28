@@ -1,6 +1,7 @@
 interface Auth {
 	eMail: string,
-	password: string
+	password: string,
+	rememberMe: boolean
 }
 
 export default Auth

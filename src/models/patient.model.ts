@@ -6,7 +6,7 @@ interface Patient extends EntityModel {
 	surname: string,
 	parentName: string,
 	sex: string,
-	eMail: string,
+	eMail: string | undefined,
 	age: number,
 }
 

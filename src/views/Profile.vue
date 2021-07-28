@@ -4,10 +4,10 @@
       <el-avatar shape="circle" :size="175" :fit="fit">
         <img :src="src" alt="avatar" />
       </el-avatar>
-      <h4>{{ surname }} {{ name }} {{ parentName }}</h4>
-      <p><span>Sex:</span> {{ sex }}</p>
-      <p><span>Email:</span> {{ eMail }}</p>
-      <p><span>Age:</span> {{ age }}</p>
+      <h4>{{ patient.surname }} {{ patient.name }} {{ patient.parentName }}</h4>
+      <p><span>Sex:</span> {{ patient.sex }}</p>
+      <p><span>Email:</span> {{ patient.eMail }}</p>
+      <p><span>Age:</span> {{ patient.age }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Visits" name="first">
@@ -26,6 +26,7 @@
 </template>
 
 <script lang="ts">
+import Patient from "@/models/patient.model";
 import { defineComponent } from "vue";
 import PatientProfileSettings from "../components/PatientProfileSettings.vue";
 
@@ -35,12 +36,14 @@ export default defineComponent({
       activeName: "first",
       src: require("../assets/img/patient-avatar.jpg"),
       fit: "cover",
-      name: "Man",
-      surname: "Florida",
-      parentName: "",
-      sex: "Male",
-      eMail: "man@florida.com",
-      age: "35",
+      patient: {
+        name: "Man",
+        surname: "Florida",
+        parentName: "",
+        sex: "Male",
+        eMail: "man@florida.com",
+        age: 35,
+      } as Patient,
     };
   },
   components: {
