@@ -36,7 +36,7 @@
   </el-form>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { mapState } from "vuex";
 
@@ -64,9 +64,6 @@ export default defineComponent({
   methods: {
     onSubmit() {
       this.$store.dispatch('login', this.formData);
-    },
-    setRememberMe() {
-      this.rememberMe = !this.rememberMe;
     },
   },
   computed: {
