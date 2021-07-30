@@ -6,6 +6,7 @@ import PatientRegistration from "../components/PatientRegistration.vue"
 import AdminRegistration from "../components/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
+import NewVisit from "../components/NewVisit.vue"
 import Profile from "../views/Profile.vue"
 
 import authGuard from "./guards/auth-guard";
@@ -18,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: (to: RouteLocation) => {
       return `${to.path}/main-screen`;
     },
-    // beforeEnter: authGuard
+    //beforeEnter: authGuard,
     children: [
       {
         path: 'main-screen',
@@ -27,6 +28,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'profile',
         component: Profile
+      },
+      {
+        path: 'new-visit',
+        component: NewVisit
       }
     ]
   },

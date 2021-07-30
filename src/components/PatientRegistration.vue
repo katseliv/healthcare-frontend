@@ -56,8 +56,7 @@ import PatientReg from "@/models/patientReg.model";
 export default defineComponent({
   data() {
     return {
-      patientRegistration: {
-      } as PatientReg,
+      patientRegistration: {} as PatientReg,
       rules: {
         name: [
           {

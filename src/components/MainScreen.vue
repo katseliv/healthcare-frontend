@@ -22,7 +22,6 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   padding-left: 30px;
-  background-image: url("../assets/img/main-screen.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
