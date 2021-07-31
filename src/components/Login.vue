@@ -2,7 +2,7 @@
 <template>
   <el-form
     ref="formData"
-    :model="formData"
+    :model="loginModule.formData"
     :rules="rules"
     label-width="120px"
     label-position="top"
@@ -14,25 +14,31 @@
       <el-input
         name="username"
         type="text"
-        v-model="formData.username"
+        v-model="loginModule.formData.username"
       ></el-input>
     </el-form-item>
     <el-form-item prop="password" label="Пароль">
       <el-input
         name="password"
         type="password"
-        v-model="formData.password"
+        v-model="loginModule.formData.password"
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-checkbox @click="setRememberMe" v-model="formData.rememberMe"
+      <el-checkbox
+        @click="setRememberMe"
+        v-model="loginModule.formData.rememberMe"
         >Запомнить меня</el-checkbox
       >
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Войти</el-button>
     </el-form-item>
-    <el-alert v-if="error" title="Неверный логин или пароль" type="error"/>
+    <el-alert
+      v-if="loginModule.error"
+      title="Неверный логин или пароль"
+      type="error"
+    />
   </el-form>
 </template>
 
@@ -63,12 +69,12 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      this.$store.dispatch('login', this.formData);
+      this.$store.dispatch("login", this.formData);
     },
   },
   computed: {
-    ...mapState(['formData', 'error'])
-  }
+    ...mapState(["loginModule"]),
+  },
 });
 </script>
 
