@@ -4,10 +4,13 @@
       <el-avatar shape="circle" :size="175" :fit="fit">
         <img :src="src" alt="avatar" />
       </el-avatar>
-      <h4>{{ patient.surname }} {{ patient.name }} {{ patient.parentName }}</h4>
-      <p><span>Sex:</span> {{ patient.sex }}</p>
-      <p><span>Email:</span> {{ patient.eMailc }}</p>
-      <p><span>Age:</span> {{ patient.age }}</p>
+      <h4>
+        {{ patientProfile.surname }} {{ patientProfile.name }}
+        {{ patientProfile.parentName }}
+      </h4>
+      <p><span>Sex:</span> {{ patientProfile.sex }}</p>
+      <p><span>Email:</span> {{ patientProfile.eMail }}</p>
+      <p><span>Age:</span> {{ patientProfile.age }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Visits" name="first">
@@ -27,8 +30,11 @@
 </template>
 
 <script lang="ts">
-import Patient from "@/models/patient.model";
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
+
+import Patient from "@/models/patient.model";
+
 import PatientProfileSettings from "../components/PatientProfileSettings.vue";
 import Allergies from "../components/Allergies.vue";
 import Diseases from "../components/Diseases.vue";
@@ -55,6 +61,9 @@ export default defineComponent({
     Allergies,
     Diseases,
     Visits,
+  },
+  computed: {
+    ...mapState(["patientProfile"]),
   },
 });
 </script>
