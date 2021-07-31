@@ -11,7 +11,7 @@
       <p><span>Email:</span> {{ adminProfile.eMail }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
-      <el-tab-pane class="profile__tab" label="Visits" name="first">
+      <el-tab-pane class="profile__tab" label="Registration" name="first">
         <AdminRegistration />
       </el-tab-pane>
     </el-tabs>

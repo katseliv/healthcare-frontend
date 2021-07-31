@@ -7,7 +7,10 @@ import AdminRegistration from "../components/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
-import Profile from "../views/PatientProfile.vue"
+import PatientProfile from "../views/PatientProfile.vue"
+import AdminProfile from "../views/AdminProfile.vue"
+
+
 
 import authGuard from "./guards/auth-guard";
 
@@ -27,11 +30,15 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'profile',
-        component: Profile
+        component: PatientProfile
       },
       {
         path: 'new-visit',
         component: NewVisit
+      },
+      {
+        path: 'admin',
+        component: AdminProfile
       }
     ]
   },
