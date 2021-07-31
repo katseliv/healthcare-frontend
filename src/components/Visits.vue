@@ -9,6 +9,10 @@
     </el-table-column>
     <el-table-column prop="status" label="status" min-width="100">
     </el-table-column>
+    <el-table-column
+      ><router-link :to="{ name: 'newVisit' }"
+        ><el-button icon="el-icon-edit"></el-button></router-link
+    ></el-table-column>
   </el-table>
 </template>
 

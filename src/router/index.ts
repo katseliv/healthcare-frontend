@@ -31,6 +31,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'new-visit',
+        name: 'newVisit',
         component: NewVisit
       }
     ]
