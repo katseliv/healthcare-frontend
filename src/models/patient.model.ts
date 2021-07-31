@@ -1,12 +1,7 @@
-import EntityModel from '@/models/entity.model';
+import Admin from '@/models/admin.model';
 
-
-interface Patient extends EntityModel {
-	name: string,
-	surname: string,
-	parentName: string,
+interface Patient extends Admin {
 	sex: string,
-	eMail: string | undefined,
 	age: number,
 }
 

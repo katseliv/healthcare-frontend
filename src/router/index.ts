@@ -7,7 +7,7 @@ import AdminRegistration from "../components/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
-import Profile from "../views/Profile.vue"
+import Profile from "../views/PatientProfile.vue"
 
 import authGuard from "./guards/auth-guard";
 

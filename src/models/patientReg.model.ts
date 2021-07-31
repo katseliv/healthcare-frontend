@@ -3,8 +3,7 @@ import Patient from "@/models/patient.model";
 interface PatientReg extends Patient {
 	password: string,
 	passwordConfirmation: string,
-	id: undefined
-
+	id: undefined,
 }
 
 export default PatientReg

@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
 import loginModule from './modules/login-module';
-import patientProfileModule from './modules/patientProfile';
+import patientProfile from './modules/patientProfile';
 
 export default createStore({
   modules: {
     loginModule,
-    patientProfileModule
+    patientProfile
   }
 });
