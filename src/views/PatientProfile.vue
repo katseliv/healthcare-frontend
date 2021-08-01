@@ -38,7 +38,7 @@ import Patient from "@/models/patient.model";
 import PatientProfileSettings from "../components/PatientProfileSettings.vue";
 import Allergies from "../components/Allergies.vue";
 import Diseases from "../components/Diseases.vue";
-import Visits from "../components/Visits.vue";
+import Visits from "../components/Visits/Visits.vue";
 
 export default defineComponent({
   data() {
