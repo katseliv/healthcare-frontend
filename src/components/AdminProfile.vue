@@ -5,8 +5,7 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ adminProfile.surname }} {{ adminProfile.name }}
-        {{ adminProfile.parentName }}
+        {{ adminProfile.fullName }}
       </h4>
       <p><span>Email:</span> {{ adminProfile.eMail }}</p>
     </div>

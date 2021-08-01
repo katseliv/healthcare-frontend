@@ -3,9 +3,6 @@ import Patient from '@/models/patient.model';
 
 const patientProfile = {
 	state: () => ({
-		name: "Man",
-		surname: "Florida",
-		parentName: "",
 		sex: "Male",
 		eMail: "man@florida.com",
 		age: 35,
