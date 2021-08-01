@@ -8,9 +8,9 @@
 import { defineComponent } from "vue";
 import { mapState } from "vuex";
 
-import DoctorProfile from "@/components/DoctorProfile.vue";
-import PatientProfile from "@/components/PatientProfile.vue";
-import AdminProfile from "@/components/AdminProfile.vue";
+import DoctorProfile from "@/components/DoctorProfile/DoctorProfile.vue";
+import PatientProfile from "@/components/PatientProfile/PatientProfile.vue";
+import AdminProfile from "@/components/AdminProfile/AdminProfile.vue";
 
 export default defineComponent({
   components: {

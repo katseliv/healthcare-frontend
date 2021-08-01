@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, RouteLocation, RouteRecordRaw } from "v
 import AuthorizationPage from "../views/AuthorizationPage.vue"
 import Login from "../components/Login.vue"
 import PatientRegistration from "../components/PatientRegistration.vue"
-import AdminRegistration from "../components/AdminRegistration.vue"
+import AdminRegistration from "../components/AdminProfile/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
