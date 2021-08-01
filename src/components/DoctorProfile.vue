@@ -29,7 +29,24 @@
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
+export default defineComponent({
+  data() {
+    return {
+      activeName: "first",
+      src: require("../assets/img/patient-avatar.jpg"),
+      fit: "cover",
+    };
+  },
+  components: {},
+  computed: {
+    ...mapState(["patientProfile"]),
+  },
+});
+</script>
 
 <style scoped>
 .profile {

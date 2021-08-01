@@ -8,9 +8,6 @@ import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
 import Profile from "../views/Profile.vue"
-import PatientProfile from "../components/PatientProfile.vue"
-import AdminProfile from "../components/AdminProfile.vue"
-import DoctorProfile from "../components/DoctorProfile.vue"
 
 
 
@@ -24,7 +21,6 @@ const routes: Array<RouteRecordRaw> = [
     redirect: (to: RouteLocation) => {
       return `${to.path}/main-screen`;
     },
-    //beforeEnter: authGuard,
     children: [
       {
         path: 'main-screen',
@@ -39,14 +35,6 @@ const routes: Array<RouteRecordRaw> = [
         name: 'newVisit',
         component: NewVisit
       },
-      // {
-      //   path: 'admin',
-      //   component: AdminProfile
-      // },
-      // {
-      //   path: 'doctor',
-      //   component: DoctorProfile
-      // }
     ]
   },
   {
