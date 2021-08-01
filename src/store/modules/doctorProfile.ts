@@ -3,20 +3,11 @@ import router from '@/router';
 
 const doctorProfile = {
 	state: () => ({
-		name: "Admin",
-		surname: "Petuch",
-		parentName: "Adminovich",
+		fullName: "Admin",
 		eMail: "petuch@cococo.com",
-		sex: "male",
-		id: 2,
-		specialties: [{
-			id: 1,
-			name: "Хирург"
-		},
-		{
-			id: 2,
-			name: "Терапевт"
-		}]
+		age: 12,
+		totalStage: 3,
+		specialties: ["Хирург", "Терапевт"],
 	} as Doctor),
 	mutations: {
 	},

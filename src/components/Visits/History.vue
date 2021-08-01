@@ -1,18 +1,18 @@
 <template>
   <el-table class="table" :data="visits" style="width: 100%">
-    <el-table-column type="index" label="№" min-width="50"> </el-table-column>
-    <el-table-column prop="result" label="result" min-width="150">
+    <el-table-column type="index" label="№"> </el-table-column>
+    <el-table-column prop="result" label="result"> </el-table-column>
+    <el-table-column prop="recipe" label="recipe"> </el-table-column>
+    <el-table-column prop="dateAndTime" label="date"> </el-table-column>
+    <el-table-column prop="status" label="status"> </el-table-column>
+    <el-table-column label="actions">
+      <router-link :to="{ name: 'addReview' }">
+        <el-button icon="el-icon-star-off" size="small">Отзыв</el-button>
+      </router-link>
+      <router-link :to="{ name: 'newVisit' }">
+        <el-button icon="el-icon-edit" size="small">Повтор</el-button>
+      </router-link>
     </el-table-column>
-    <el-table-column prop="recipe" label="recipe" min-width="100">
-    </el-table-column>
-    <el-table-column prop="dateAndTime" label="date" min-width="100">
-    </el-table-column>
-    <el-table-column prop="status" label="status" min-width="100">
-    </el-table-column>
-    <el-table-column
-      ><router-link :to="{ name: 'newVisit' }"
-        ><el-button icon="el-icon-edit"></el-button></router-link
-    ></el-table-column>
   </el-table>
 </template>
 
@@ -41,11 +41,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-@media (max-width: 720px) {
-  .table {
-    overflow-x: scroll;
-  }
-}
-</style>

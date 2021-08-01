@@ -3,9 +3,6 @@ import router from '@/router';
 
 const adminProfile = {
 	state: () => ({
-		name: "Admin",
-		surname: "Petuch",
-		parentName: "Adminovich",
 		eMail: "petuch@cococo.com",
 	} as Admin),
 	mutations: {

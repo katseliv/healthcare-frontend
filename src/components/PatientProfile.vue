@@ -5,8 +5,7 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ patientProfile.surname }} {{ patientProfile.name }}
-        {{ patientProfile.parentName }}
+        {{ patientProfile.fullName }} 
       </h4>
       <p><span>Sex:</span> {{ patientProfile.sex }}</p>
       <p><span>Email:</span> {{ patientProfile.eMail }}</p>
@@ -33,12 +32,10 @@
 import { defineComponent } from "vue";
 import { mapState } from "vuex";
 
-import Patient from "@/models/patient.model";
-
 import PatientProfileSettings from "./PatientProfileSettings.vue";
 import Allergies from "./Allergies.vue";
 import Diseases from "./Diseases.vue";
-import Visits from "./Visits.vue";
+import Visits from "./Visits/Visits.vue";
 
 export default defineComponent({
   data() {
@@ -46,14 +43,6 @@ export default defineComponent({
       activeName: "first",
       src: require("../assets/img/patient-avatar.jpg"),
       fit: "cover",
-      patient: {
-        name: "Man",
-        surname: "Florida",
-        parentName: "",
-        sex: "Male",
-        eMail: "man@florida.com",
-        age: 35,
-      } as Patient,
     };
   },
   components: {

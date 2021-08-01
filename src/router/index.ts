@@ -8,6 +8,8 @@ import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
 import Profile from "../views/Profile.vue"
+import ReviewForm from "../components/ReviewForm.vue"
+
 
 
 
@@ -28,6 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'profile',
+        name: 'profile',
         component: Profile
       },
       {
@@ -58,6 +61,11 @@ const routes: Array<RouteRecordRaw> = [
         component: AdminRegistration,
       },
     ]
+  },
+  {
+    path: '/review',
+    name: 'addReview',
+    component: ReviewForm
   },
   {
     path: '/',

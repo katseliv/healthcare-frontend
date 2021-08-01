@@ -5,10 +5,8 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ doctorProfile.surname }} {{ doctorProfile.name }}
-        {{ doctorProfile.parentName }}
+        {{ doctorProfile.fullName }}
       </h4>
-      <p><span>Sex:</span> {{ doctorProfile.sex }}</p>
       <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
