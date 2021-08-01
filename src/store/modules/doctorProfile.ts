@@ -1,17 +1,26 @@
-import Admin from '@/models/admin.model';
+import Doctor from '@/models/doctor.model';
 import router from '@/router';
 
-const adminProfile = {
+const doctorProfile = {
 	state: () => ({
 		name: "Admin",
 		surname: "Petuch",
 		parentName: "Adminovich",
 		eMail: "petuch@cococo.com",
-	} as Admin),
+		sex: "male",
+		id: 2,
+		specialties: [{
+			id: 1,
+			name: "Хирург"
+		},
+		{
+			id: 2,
+			name: "Терапевт"
+		}]
+	} as Doctor),
 	mutations: {
 	},
 	actions: {}
-
 }
 
-export default adminProfile;
+export default doctorProfile;

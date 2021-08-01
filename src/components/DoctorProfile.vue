@@ -5,12 +5,11 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        <!-- {{ patientProfile.surname }} {{ patientProfile.name }}
-        {{ patientProfile.parentName }} -->
+        {{ doctorProfile.surname }} {{ doctorProfile.name }}
+        {{ doctorProfile.parentName }}
       </h4>
-      <!-- <p><span>Sex:</span> {{ patientProfile.sex }}</p>
-      <p><span>Email:</span> {{ patientProfile.eMail }}</p>
-      <p><span>Age:</span> {{ patientProfile.age }}</p> -->
+      <p><span>Sex:</span> {{ doctorProfile.sex }}</p>
+      <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Visits" name="first">
@@ -43,7 +42,7 @@ export default defineComponent({
   },
   components: {},
   computed: {
-    ...mapState(["patientProfile"]),
+    ...mapState(["doctorProfile"]),
   },
 });
 </script>
