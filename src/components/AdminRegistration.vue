@@ -21,6 +21,13 @@
     <el-form-item label="E-mail" prop="eMail">
       <el-input type="email" v-model="registration.userData.eMail"></el-input>
     </el-form-item>
+    <el-form-item
+      v-if="registration.userType === 'doctor'"
+      label="Опыт"
+      prop="exp"
+    >
+      <el-input type="email" v-model="registration.userData.exp"></el-input>
+    </el-form-item>
     <el-form-item label="Пароль" prop="password">
       <el-input
         type="password"
@@ -135,6 +142,13 @@ export default {
           {
             required: true,
             message: "Выберите тип пользователя",
+            trigger: "blur",
+          },
+        ],
+        exp: [
+          {
+            required: true,
+            message: "Введите стаж",
             trigger: "blur",
           },
         ],

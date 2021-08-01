@@ -10,9 +10,6 @@
       <el-menu-item index="/authorization/registration">
         Registration
       </el-menu-item>
-      <el-menu-item index="/authorization/admin">
-        Admin registration
-      </el-menu-item>
     </el-menu>
   </el-header>
   <el-main><router-view /></el-main>

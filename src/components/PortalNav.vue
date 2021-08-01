@@ -7,6 +7,7 @@
   >
     <el-menu-item index="/portal/main-screen"> Main Screen </el-menu-item>
     <el-menu-item index="/portal/profile"> Profile </el-menu-item>
+    <el-menu-item index="/portal/admin"> Admin profile </el-menu-item>
     <el-menu-item index="/portal/new-visit"> New visit </el-menu-item>
   </el-menu>
 </template>
