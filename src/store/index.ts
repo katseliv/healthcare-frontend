@@ -4,6 +4,9 @@ import patientProfile from './modules/patientProfile';
 import adminProfile from "./modules/adminProfile";
 
 export default createStore({
+  state: {
+    userType: 'doctor',
+  },
   modules: {
     loginModule,
     patientProfile,

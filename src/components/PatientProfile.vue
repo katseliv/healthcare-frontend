@@ -35,10 +35,10 @@ import { mapState } from "vuex";
 
 import Patient from "@/models/patient.model";
 
-import PatientProfileSettings from "../components/PatientProfileSettings.vue";
-import Allergies from "../components/Allergies.vue";
-import Diseases from "../components/Diseases.vue";
-import Visits from "../components/Visits.vue";
+import PatientProfileSettings from "./PatientProfileSettings.vue";
+import Allergies from "./Allergies.vue";
+import Diseases from "./Diseases.vue";
+import Visits from "./Visits.vue";
 
 export default defineComponent({
   data() {

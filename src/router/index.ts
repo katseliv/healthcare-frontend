@@ -7,8 +7,10 @@ import AdminRegistration from "../components/AdminRegistration.vue"
 import Portal from "../views/Portal.vue"
 import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
-import PatientProfile from "../views/PatientProfile.vue"
-import AdminProfile from "../views/AdminProfile.vue"
+import Profile from "../views/Profile.vue"
+import PatientProfile from "../components/PatientProfile.vue"
+import AdminProfile from "../components/AdminProfile.vue"
+import DoctorProfile from "../components/DoctorProfile.vue"
 
 
 
@@ -30,17 +32,21 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'profile',
-        component: PatientProfile
+        component: Profile
       },
       {
         path: 'new-visit',
         name: 'newVisit',
         component: NewVisit
       },
-      {
-        path: 'admin',
-        component: AdminProfile
-      }
+      // {
+      //   path: 'admin',
+      //   component: AdminProfile
+      // },
+      // {
+      //   path: 'doctor',
+      //   component: DoctorProfile
+      // }
     ]
   },
   {
