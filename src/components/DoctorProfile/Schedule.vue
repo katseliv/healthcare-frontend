@@ -5,12 +5,11 @@
     :key="day.id"
     :data="day.slots"
     :row-class-name="tableRowClassName"
-    style="max-width: 400px"
+    style="max-width: 200px"
   >
-    >
-    <el-table-column :label="day.day" prop="time" width="200"></el-table-column>
-    <el-table-column label="Действия">
-      <el-button icon="el-icon-delete" size="small">Удалить</el-button>
+    <el-table-column :label="day.day" prop="time" width="100"></el-table-column>
+    <el-table-column>
+      <el-button icon="el-icon-delete" size="small"></el-button>
     </el-table-column>
   </el-table>
 </template>
@@ -185,6 +184,10 @@ export default defineComponent({
 
 .el-table .warning-row {
   background-color: #c07c7cd5;
+}
+
+h5 {
+  text-align: left;
 }
 </style>
 

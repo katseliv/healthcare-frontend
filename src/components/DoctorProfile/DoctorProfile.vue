@@ -8,9 +8,14 @@
         {{ doctorProfile.fullName }}
       </h4>
       <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
+      <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
+      <h5>Специальности:</h5>
+      <p v-for="specitality in doctorProfile.specialties" :key="specitality">
+        {{ specitality }}
+      </p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
-      <el-tab-pane class="profile__tab" label="Расписание" name="first">
+      <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
         <Schedule />
       </el-tab-pane>
     </el-tabs>
@@ -58,6 +63,11 @@ export default defineComponent({
 }
 .profile__tabs {
   flex: 0 1 80%;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
 }
 p {
   text-align: left;
