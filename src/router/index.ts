@@ -9,6 +9,7 @@ import MainScreen from "../components/MainScreen.vue"
 import NewVisit from "../components/NewVisit.vue"
 import Profile from "../views/Profile.vue"
 import ReviewForm from "../components/ReviewForm.vue"
+import Report from "../components/DoctorProfile/Report.vue"
 
 
 
@@ -66,6 +67,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/review',
     name: 'addReview',
     component: ReviewForm
+  },
+  {
+    path: '/report',
+    name: 'addReport',
+    component: Report
   },
   {
     path: '/',

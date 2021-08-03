@@ -17,6 +17,9 @@
       <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
         <Schedule />
       </el-tab-pane>
+      <el-tab-pane label="Результаты осмотра" name="second">
+        <Report />
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -26,17 +29,19 @@ import { defineComponent } from "vue";
 import { mapState } from "vuex";
 
 import Schedule from "./Schedule.vue";
+import Report from "./Reports.vue";
 
 export default defineComponent({
   data() {
     return {
       activeName: "first",
-      src: require("../../assets/img/patient-avatar.jpg"),
+      src: require("../../assets/img/patient-avatar.png"),
       fit: "cover",
     };
   },
   components: {
     Schedule,
+    Report,
   },
   computed: {
     ...mapState(["doctorProfile"]),

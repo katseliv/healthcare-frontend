@@ -5,11 +5,14 @@
     :key="day.id"
     :data="day.slots"
     :row-class-name="tableRowClassName"
-    style="max-width: 200px"
+    style="max-width: 500px"
   >
-    <el-table-column :label="day.day" prop="time" width="100"></el-table-column>
-    <el-table-column>
-      <el-button icon="el-icon-delete" size="small"></el-button>
+    >
+    <el-table-column :label="day.day" prop="time" width="300"></el-table-column>
+    <el-table-column label="Действия">
+      <router-link :to="{ name: 'addReport' }">
+        <el-button icon="el-icon-edit" size="small">Отчёт</el-button>
+      </router-link>
     </el-table-column>
   </el-table>
 </template>
@@ -43,17 +46,17 @@ export default defineComponent({
           slots: [
             {
               id: 1,
-              time: new Date(2021, 7, 2, 12, 40),
+              time: new Date(2021, 6, 26, 12, 40),
               isFree: false,
             },
             {
               id: 2,
-              time: new Date(2021, 7, 2, 16, 40),
+              time: new Date(2021, 6, 26, 16, 40),
               isFree: true,
             },
             {
               id: 3,
-              time: new Date(2021, 7, 2, 17, 45),
+              time: new Date(2021, 6, 26, 17, 45),
               isFree: true,
             },
           ],
@@ -63,17 +66,17 @@ export default defineComponent({
           slots: [
             {
               id: 4,
-              time: new Date(2021, 7, 3, 17, 20),
+              time: new Date(2021, 6, 27, 17, 20),
               isFree: true,
             },
             {
               id: 5,
-              time: new Date(2021, 7, 3, 17, 50),
+              time: new Date(2021, 6, 27, 17, 50),
               isFree: true,
             },
             {
               id: 6,
-              time: new Date(2021, 7, 3, 18, 30),
+              time: new Date(2021, 6, 27, 18, 30),
               isFree: true,
             },
           ],
@@ -83,17 +86,17 @@ export default defineComponent({
           slots: [
             {
               id: 7,
-              time: new Date(2021, 7, 4, 18, 30),
+              time: new Date(2021, 6, 28, 18, 30),
               isFree: true,
             },
             {
               id: 8,
-              time: new Date(2021, 7, 4, 18, 30),
+              time: new Date(2021, 6, 28, 18, 30),
               isFree: true,
             },
             {
               id: 9,
-              time: new Date(2021, 7, 4, 18, 30),
+              time: new Date(2021, 6, 28, 18, 30),
               isFree: true,
             },
           ],
@@ -103,17 +106,17 @@ export default defineComponent({
           slots: [
             {
               id: 10,
-              time: new Date(2021, 7, 5, 18, 30),
+              time: new Date(2021, 6, 29, 18, 30),
               isFree: true,
             },
             {
               id: 11,
-              time: new Date(2021, 7, 5, 18, 30),
+              time: new Date(2021, 6, 29, 18, 30),
               isFree: true,
             },
             {
               id: 12,
-              time: new Date(2021, 7, 5, 18, 30),
+              time: new Date(2021, 6, 29, 18, 30),
               isFree: true,
             },
           ],
@@ -123,17 +126,17 @@ export default defineComponent({
           slots: [
             {
               id: 13,
-              time: new Date(2021, 7, 6, 18, 30),
+              time: new Date(2021, 6, 30, 18, 30),
               isFree: true,
             },
             {
               id: 14,
-              time: new Date(2021, 7, 6, 18, 30),
+              time: new Date(2021, 6, 30, 18, 30),
               isFree: true,
             },
             {
               id: 15,
-              time: new Date(2021, 7, 6, 18, 30),
+              time: new Date(2021, 6, 30, 18, 30),
               isFree: true,
             },
           ],
@@ -143,17 +146,17 @@ export default defineComponent({
           slots: [
             {
               id: 16,
-              time: new Date(2021, 7, 7, 18, 30),
+              time: new Date(2021, 6, 31, 18, 30),
               isFree: true,
             },
             {
               id: 17,
-              time: new Date(2021, 7, 7, 18, 30),
+              time: new Date(2021, 6, 31, 18, 30),
               isFree: true,
             },
             {
               id: 18,
-              time: new Date(2021, 7, 7, 18, 30),
+              time: new Date(2021, 6, 31, 18, 30),
               isFree: true,
             },
           ],
@@ -163,17 +166,17 @@ export default defineComponent({
           slots: [
             {
               id: 19,
-              time: new Date(2021, 7, 8, 18, 30),
+              time: new Date(2021, 7, 1, 18, 30),
               isFree: true,
             },
             {
               id: 20,
-              time: new Date(2021, 7, 8, 18, 30),
+              time: new Date(2021, 7, 1, 18, 30),
               isFree: true,
             },
             {
               id: 21,
-              time: new Date(2021, 7, 8, 18, 30),
+              time: new Date(2021, 7, 1, 18, 30),
               isFree: true,
             },
           ],
@@ -192,10 +195,6 @@ export default defineComponent({
 
 .el-table .warning-row {
   background-color: #c07c7cd5;
-}
-
-h5 {
-  text-align: left;
 }
 </style>
 

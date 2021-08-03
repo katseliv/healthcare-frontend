@@ -27,7 +27,7 @@ export default defineComponent({
   data() {
     return {
       activeName: "first",
-      src: require("../../assets/img/patient-avatar.jpg"),
+      src: require("../../assets/img/patient-avatar.png"),
       fit: "cover",
     };
   },
