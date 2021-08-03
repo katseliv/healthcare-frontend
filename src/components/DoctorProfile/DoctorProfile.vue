@@ -8,7 +8,6 @@
         {{ doctorProfile.fullName }}
       </h4>
       <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
-      <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
       <h5>Специальности:</h5>
       <p v-for="specitality in doctorProfile.specialties" :key="specitality">
         {{ specitality }}
