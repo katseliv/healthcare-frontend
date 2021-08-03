@@ -4,7 +4,7 @@ import router from '@/router';
 const doctorProfile = {
 	state: () => ({
 		fullName: "Admin",
-		eMail: "petuch@cococo.com",
+		eMail: "doctor@gmail.com",
 		age: 12,
 		totalStage: 3,
 		specialties: ["Хирург", "Терапевт"],
