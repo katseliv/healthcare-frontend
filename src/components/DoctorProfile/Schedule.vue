@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import EventService from "../../api/EventService";
 
 export default defineComponent({
   methods: {
@@ -46,151 +47,16 @@ export default defineComponent({
       return false;
     },
   },
-
+  created() {
+    EventService.getSchedule()
+      .then((response) => {
+        this.schedule = response.data;
+      })
+      .catch((error) => console.log(error));
+  },
   data() {
     return {
-      schedule: [
-        {
-          day: "Пн",
-          slots: [
-            {
-              id: 1,
-              time: new Date(2021, 7, 2, 12, 40),
-              isFree: false,
-            },
-            {
-              id: 2,
-              time: new Date(2021, 7, 2, 16, 40),
-              isFree: true,
-            },
-            {
-              id: 3,
-              time: new Date(2021, 7, 2, 17, 45),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Вт",
-          slots: [
-            {
-              id: 4,
-              time: new Date(2021, 7, 3, 17, 20),
-              isFree: true,
-            },
-            {
-              id: 5,
-              time: new Date(2021, 7, 3, 17, 50),
-              isFree: true,
-            },
-            {
-              id: 6,
-              time: new Date(2021, 7, 3, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Ср",
-          slots: [
-            {
-              id: 7,
-              time: new Date(2021, 7, 4, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 8,
-              time: new Date(2021, 7, 4, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 9,
-              time: new Date(2021, 7, 4, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Чт",
-          slots: [
-            {
-              id: 10,
-              time: new Date(2021, 7, 5, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 11,
-              time: new Date(2021, 7, 5, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 12,
-              time: new Date(2021, 7, 5, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Пт",
-          slots: [
-            {
-              id: 13,
-              time: new Date(2021, 7, 6, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 14,
-              time: new Date(2021, 7, 6, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 15,
-              time: new Date(2021, 7, 6, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Сб",
-          slots: [
-            {
-              id: 16,
-              time: new Date(2021, 7, 7, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 17,
-              time: new Date(2021, 7, 7, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 18,
-              time: new Date(2021, 7, 7, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-        {
-          day: "Вс",
-          slots: [
-            {
-              id: 19,
-              time: new Date(2021, 7, 8, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 20,
-              time: new Date(2021, 7, 8, 18, 30),
-              isFree: true,
-            },
-            {
-              id: 21,
-              time: new Date(2021, 7, 8, 18, 30),
-              isFree: true,
-            },
-          ],
-        },
-      ],
+      schedule: [],
     };
   },
   computed: {},
