@@ -15,9 +15,11 @@ export default defineComponent({
     return {
       allergies: [
         {
+          id: 0,
           description: "Аллергия на аллергиков",
         },
         {
+          id: 1,
           description: "Аллергия на католиков",
         },
       ] as Allergy[],

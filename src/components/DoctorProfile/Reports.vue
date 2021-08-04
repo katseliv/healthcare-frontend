@@ -188,15 +188,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.el-table .success-row {
-  background-color: #9fe99fc7;
-}
 
-.el-table .warning-row {
-  background-color: #c07c7cd5;
-}
-</style>
 
 
 <style scoped>

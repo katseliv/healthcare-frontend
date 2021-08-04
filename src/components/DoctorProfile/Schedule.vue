@@ -9,7 +9,14 @@
   >
     <el-table-column :label="day.day" prop="time" width="100"></el-table-column>
     <el-table-column>
-      <el-button icon="el-icon-delete" size="small"></el-button>
+      <el-button icon="el-icon-delete" class="delete-button" size="small"
+        >Удалить</el-button
+      >
+      <router-link :to="{ name: 'addReport' }">
+        <el-button class="report-button" icon="el-icon-edit" size="small"
+          >Отчёт</el-button
+        >
+      </router-link>
     </el-table-column>
   </el-table>
 </template>
@@ -20,19 +27,24 @@ import { defineComponent } from "vue";
 export default defineComponent({
   methods: {
     tableRowClassName({ row }: any) {
+      let className = "";
       if (row.isFree === true) {
-        return "success-row";
+        className = "success-row";
       } else {
-        return "warning-row";
+        className = "warning-row";
       }
+      if (this.isExpired(row.time)) {
+        className += " report-row";
+      }
+      return className;
     },
-    // isExpired(date: Date) {
-    //   let now = new Date();
-    //   console.log(`${now} | ${date}`);
-    //   console.log(now > date);
-    //   if (now > date) return true;
-    //   return false;
-    // },
+    isExpired(date: Date) {
+      let now = new Date();
+      console.log(`${now} | ${date}`);
+      console.log(now > date);
+      if (now > date) return true;
+      return false;
+    },
   },
 
   data() {
@@ -194,8 +206,22 @@ export default defineComponent({
   background-color: #c07c7cd5;
 }
 
+.delete-button {
+  display: none;
+}
 h5 {
   text-align: left;
+}
+.el-table .report-button {
+  display: none;
+}
+
+.el-table .report-row .report-button {
+  display: block;
+}
+
+.el-table .report-row .delete-button {
+  display: none;
 }
 </style>
 
