@@ -1,133 +1,140 @@
 {
   "schedule": [{
       "day": "Пн",
+      "date": "2021-06-26",
       "slots": [{
           "id": 1,
-          "time": "2021-06-26T12:40:00",
+          "time": "12:40",
           "isFree": false
         },
         {
           "id": 2,
-          "time": "2021-06-26T16:40:00",
+          "time": "16:40",
           "isFree": true
         },
         {
           "id": 3,
-          "time": "2021-06-26T17:45:00",
+          "time": "17:45",
           "isFree": true
         }
       ]
     },
     {
       "day": "Вт",
+      "date": "2021-06-27",
       "slots": [{
           "id": 4,
-          "time": "2021-06-27T17:20:00",
+          "time": "17:20",
           "isFree": true
         },
         {
           "id": 5,
-          "time": "2021-06-27T17:50:00",
+          "time": "17:50",
           "isFree": true
         },
         {
           "id": 6,
-          "time": "2021-06-27T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
     },
     {
       "day": "Ср",
+      "date": "2021-06-28",
       "slots": [{
           "id": 7,
-          "time": "2021-06-28T17:30:00",
+          "time": "17:30",
           "isFree": true
         },
         {
           "id": 8,
-          "time": "2021-06-28T18:00:00",
+          "time": "18:00",
           "isFree": true
         },
         {
           "id": 9,
-          "time": "2021-06-28T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
     },
     {
       "day": "Чт",
+      "date": "2021-06-29",
       "slots": [{
           "id": 10,
-          "time": "2021-06-29T17:30:00",
+          "time": "17:30",
           "isFree": true
         },
         {
           "id": 11,
-          "time": "2021-06-29T18:00:00",
+          "time": "18:00",
           "isFree": true
         },
         {
           "id": 12,
-          "time": "2021-06-29T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
     },
     {
       "day": "Пт",
+      "date": "2021-06-30",
       "slots": [{
           "id": 13,
-          "time": "2021-06-30T17:30:00",
+          "time": "17:30",
           "isFree": true
         },
         {
           "id": 14,
-          "time": "2021-06-30T18:00:00",
+          "time": "18:00",
           "isFree": true
         },
         {
           "id": 15,
-          "time": "2021-06-30T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
     },
     {
       "day": "Сб",
+      "date": "2021-06-31",
       "slots": [{
           "id": 16,
-          "time": "2021-06-31T17:30:00",
+          "time": "17:30",
           "isFree": true
         },
         {
           "id": 17,
-          "time": "2021-06-31T18:00:00",
+          "time": "18:00",
           "isFree": true
         },
         {
           "id": 18,
-          "time": "2021-06-31T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
     },
     {
       "day": "Вс",
+      "date": "2021-06-01",
       "slots": [{
           "id": 19,
-          "time": "2021-07-01T17:30:00",
+          "time": "17:30",
           "isFree": true
         },
         {
           "id": 20,
-          "time": "2021-07-01T18:00:00",
+          "time": "18:00",
           "isFree": true
         },
         {
           "id": 21,
-          "time": "2021-07-01T18:30:00",
+          "time": "18:30",
           "isFree": true
         }
       ]
@@ -138,13 +145,13 @@
       "fullName": "Адольф Виссарионович Сатана",
       "age": 66,
       "sex": "male",
-      "email": "666@666.66"
+      "eMail": "666@666.66"
     },
     {
       "fullName": "Сас Или Сос",
       "age": 2,
       "sex": "male",
-      "email": "Sos@Sas.Sos",
+      "eMail": "vot@vChem.vopros",
       "id": 1
     },
     {
@@ -152,7 +159,7 @@
       "fullName": "Копал Русалка Капитановна",
       "age": 120,
       "sex": "female",
-      "email": "rusalka@gipsy.com"
+      "eMail": "rusalka@gipsy.com"
     }
   ]
 }

@@ -31,11 +31,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState } from "vuex";
+import { mapActions } from "vuex";
 
 import PatientProfileSettings from "./PatientProfileSettings.vue";
 import Allergies from "./Allergies.vue";
 import Diseases from "./Diseases.vue";
 import Visits from "../Visits/Visits.vue";
+import patientProfile from "@/store/modules/patientProfile";
 
 export default defineComponent({
   data() {
@@ -44,6 +46,12 @@ export default defineComponent({
       src: require("../../assets/img/patient-avatar.png"),
       fit: "cover",
     };
+  },
+  methods: {
+    ...mapActions(["updatePatientProfile"]),
+  },
+  created() {
+    this.updatePatientProfile(1);
   },
   components: {
     PatientProfileSettings,

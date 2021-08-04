@@ -1,16 +1,35 @@
-import router from '@/router';
-import Patient from '@/models/patient.model';
+import Patient from '@/models/patient.model'
+import EventService from '@/api/EventService'
 
 const patientProfile = {
 	state: () => ({
-		sex: "Male",
-		eMail: "man@florida.com",
+		id: 0,
+		fullName: "",
+		sex: "",
+		eMail: "",
 		age: 35,
 	} as Patient),
 	mutations: {
-
+		UPDATE_PATIENT_PROFILE(state: any, payload: any) {
+			state.fullName = payload.fullName;
+			state.sex = payload.sex;
+			state.eMail = payload.eMail;
+			state.age = payload.age;
+			state.id = payload.id;
+		}
 	},
-	actions: {}
+	actions: {
+		updatePatientProfile(context: any, id: number) {
+			EventService.getPatientById(id)
+				.then((response) => {
+					console.log(response.data)
+					context.commit('UPDATE_PATIENT_PROFILE', response.data)
+				})
+				.catch((error) => {
+					console.log(error)
+				})
+		}
+	}
 
 }
 
