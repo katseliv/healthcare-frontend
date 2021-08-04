@@ -39,8 +39,9 @@ export default defineComponent({
       }
       return className;
     },
-    isExpired(date: Date) {
+    isExpired(time: string) {
       let now = new Date();
+      let date = new Date(time);
       console.log(`${now} | ${date}`);
       console.log(now > date);
       if (now > date) return true;
