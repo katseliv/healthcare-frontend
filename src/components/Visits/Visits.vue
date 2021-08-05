@@ -29,19 +29,28 @@ export default defineComponent({
     History,
     Future,
   },
+  methods: {
+    mock() {
+      console.log("Работает");
+    },
+  },
 
   async created() {
-    const visits = await EventService.getVisitsByPatientId(1).then(
-      (response) => {
+    const visits = await EventService.getVisitsByPatientId(1)
+      .then((response) => {
         return response.data;
-      }
-    );
+      })
+      .catch((error) => {
+        return console.log(error);
+      });
     await visits.forEach(async (visit: any) => {
-      visit.doctorName = await EventService.getDoctorById(visit.doctorId).then(
-        (response) => {
+      visit.doctorName = await EventService.getDoctorById(visit.doctorId)
+        .then((response) => {
           return response.data.fullName;
-        }
-      );
+        })
+        .catch((error) => {
+          return console.log(error);
+        });
     });
     this.oldVisits = visits.filter((visit: any) => visit.status === "old");
     this.newVisits = visits.filter((visit: any) => visit.status === "new");

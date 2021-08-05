@@ -26,6 +26,10 @@ const EventService = {
     getVisitsByPatientId(patientId: number) {
         return apiClient.get(`/appointments?patientId=${patientId}`)
     },
+    deleteVisitById(id: number) {
+        console.log(id);
+        return apiClient.delete(`/appointments/${id}`)
+    },
     getDoctorById(id: number) {
         return apiClient.get(`/doctors/${id}`)
     }
