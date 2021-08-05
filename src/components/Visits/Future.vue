@@ -1,5 +1,5 @@
 <template>
-  <el-table class="table" :data="visits" style="width: 100%">
+  <el-table class="table" :data="newVisits" style="width: 100%">
     <el-table-column type="index" label="№"> </el-table-column>
     <el-table-column prop="doctorName" label="Имя врача"> </el-table-column>
     <el-table-column prop="dateAndTime" label="date"> </el-table-column>
@@ -27,15 +27,12 @@ export default defineComponent({
           doctoName: 1,
         },
       ] as any,
-      //   doctors: [
-      //     {
-      //       fullName: "Иванов И.И.",
-      //     },
-      //     {
-      //       fullName: "Петорв Д.К.",
-      //     },
-      //   ] as Doctor[],
     };
+  },
+  props: {
+    newVisits: {
+      type: Array,
+    },
   },
 
   computed: {

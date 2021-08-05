@@ -179,7 +179,7 @@
       "result": "string",
       "recipe": "string",
       "dateAndTime": "string",
-      "status": "string"
+      "status": "new"
     },
     {
       "id": 1,
@@ -188,7 +188,7 @@
       "result": "string",
       "recipe": "string",
       "dateAndTime": "string",
-      "status": "string"
+      "status": "old"
     },
     {
       "id": 2,
@@ -197,7 +197,7 @@
       "result": "string",
       "recipe": "string",
       "dateAndTime": "string",
-      "status": "string"
+      "status": "old"
     },
     {
       "id": 3,
@@ -206,7 +206,7 @@
       "result": "string",
       "recipe": "string",
       "dateAndTime": "string",
-      "status": "string"
+      "status": "new"
     }
   ],
   "doctors": [

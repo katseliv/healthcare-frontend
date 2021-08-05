@@ -1,10 +1,10 @@
 <template>
   <el-tabs type="card" v-model="activeName">
     <el-tab-pane label="History" name="first">
-      <History />
+      <History :oldVisits="oldVisits" />
     </el-tab-pane>
     <el-tab-pane label="Future" name="second">
-      <Future />
+      <Future :newVisits="newVisits" />
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -14,11 +14,15 @@ import { defineComponent } from "vue";
 import Future from "./Future.vue";
 import History from "./History.vue";
 import EventService from "@/api/EventService";
+import Doctor from "@/models/doctor.model";
+import Visit from "@/models/visit.model";
 
 export default defineComponent({
   data() {
     return {
       activeName: "first",
+      oldVisits: [],
+      newVisits: [],
     };
   },
   components: {
@@ -27,18 +31,20 @@ export default defineComponent({
   },
 
   async created() {
-    const visits = await EventService.getVisitsByPatientId(1)
-      .then((response) => {
+    const visits = await EventService.getVisitsByPatientId(1).then(
+      (response) => {
         return response.data;
-      })
-      .then((response) => {
-        response.forEach((element: any) => {
-          element.doctorName = "Работает";
-        });
-
-        return response;
-      });
-    console.log(visits);
+      }
+    );
+    await visits.forEach(async (visit: any) => {
+      visit.doctorName = await EventService.getDoctorById(visit.doctorId).then(
+        (response) => {
+          return response.data.fullName;
+        }
+      );
+    });
+    this.oldVisits = visits.filter((visit: any) => visit.status === "old");
+    this.newVisits = visits.filter((visit: any) => visit.status === "new");
   },
 });
 </script>

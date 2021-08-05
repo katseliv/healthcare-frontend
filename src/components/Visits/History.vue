@@ -39,5 +39,6 @@ export default defineComponent({
       ] as Visit[],
     };
   },
+  props: {},
 });
 </script>

@@ -25,6 +25,9 @@ const EventService = {
     },
     getVisitsByPatientId(patientId: number) {
         return apiClient.get(`/appointments?patientId=${patientId}`)
+    },
+    getDoctorById(id: number) {
+        return apiClient.get(`/doctors/${id}`)
     }
 
 }
