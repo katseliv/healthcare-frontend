@@ -13,6 +13,7 @@
 import { defineComponent } from "vue";
 import Future from "./Future.vue";
 import History from "./History.vue";
+import EventService from "@/api/EventService";
 
 export default defineComponent({
   data() {
@@ -23,6 +24,21 @@ export default defineComponent({
   components: {
     History,
     Future,
+  },
+
+  async created() {
+    const visits = await EventService.getVisitsByPatientId(1)
+      .then((response) => {
+        return response.data;
+      })
+      .then((response) => {
+        response.forEach((element: any) => {
+          element.doctorName = "Работает";
+        });
+
+        return response;
+      });
+    console.log(visits);
   },
 });
 </script>

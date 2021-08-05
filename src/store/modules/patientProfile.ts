@@ -22,7 +22,6 @@ const patientProfile = {
 		updatePatientProfile(context: any, id: number) {
 			EventService.getPatientById(id)
 				.then((response) => {
-					console.log(response.data)
 					context.commit('UPDATE_PATIENT_PROFILE', response.data)
 				})
 				.catch((error) => {

@@ -1,3 +1,4 @@
+import Visit from "@/models/visit.model";
 import axios from "axios"
 
 const apiClient = axios.create({
@@ -9,7 +10,7 @@ const apiClient = axios.create({
     },
 })
 
-export default {
+const EventService = {
     getSchedule() {
         return apiClient.get('/schedule');
     },
@@ -21,5 +22,10 @@ export default {
     },
     putPatientById(id: number, patientData: any) {
         return apiClient.put(`/patients/${id}`, patientData)
+    },
+    getVisitsByPatientId(patientId: number) {
+        return apiClient.get(`/appointments?patientId=${patientId}`)
     }
+
 }
+export default EventService
