@@ -12,5 +12,8 @@ const apiClient = axios.create({
 export default {
     getSchedule() {
         return apiClient.get('/schedule');
+    },
+    getPatientById(id: number) {
+        return apiClient.get(`/patients/${id}`)
     }
 }
