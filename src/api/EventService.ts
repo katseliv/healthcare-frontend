@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios"
 
 const apiClient = axios.create({
     baseURL: 'http://localhost:3000',
@@ -6,7 +6,7 @@ const apiClient = axios.create({
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-    }
+    },
 })
 
 export default {
@@ -15,5 +15,8 @@ export default {
     },
     getPatientById(id: number) {
         return apiClient.get(`/patients/${id}`)
+    },
+    putPatientById(id: number, patientData: any) {
+        return apiClient.put(`/patients/${id}`, patientData)
     }
 }

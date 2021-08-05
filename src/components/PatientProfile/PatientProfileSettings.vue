@@ -8,14 +8,8 @@
     class="form"
   >
     <h2>Настройки профиля</h2>
-    <el-form-item label="Изменить имя">
-      <el-input v-model="settings.name"></el-input>
-    </el-form-item>
-    <el-form-item label="Изменить фамилию">
-      <el-input v-model="settings.surname"></el-input>
-    </el-form-item>
-    <el-form-item label="Изменить отчество">
-      <el-input v-model="settings.parentName"></el-input>
+    <el-form-item label="Изменить ФИО">
+      <el-input v-model="settings.fullName"></el-input>
     </el-form-item>
     <el-form-item label="Изменить пол">
       <el-radio-group v-model="settings.sex">
@@ -40,7 +34,9 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button @click="submit" type="primary">Подтвердить</el-button>
+      <el-button @click="submit(settings)" type="primary"
+        >Подтвердить</el-button
+      >
     </el-form-item>
   </el-form>
 </template>
@@ -48,6 +44,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import PatientSettings from "@/models/pateinetSettings.model";
+import EventService from "@/api/EventService";
 
 export default defineComponent({
   data() {
@@ -56,8 +53,8 @@ export default defineComponent({
     };
   },
   methods: {
-    submit() {
-      console.log(this.settings);
+    submit(settings: any) {
+      EventService.putPatientById(1, settings);
     },
   },
 });
