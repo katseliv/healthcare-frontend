@@ -1,7 +1,7 @@
 <template>
   <el-table
     class="table"
-    v-for="day in schedule"
+    v-for="day in reports"
     :key="day.id"
     :data="day.slots"
     :row-class-name="tableRowClassName"
@@ -29,18 +29,11 @@ export default defineComponent({
         return "warning-row";
       }
     },
-    // isExpired(date: Date) {
-    //   let now = new Date();
-    //   console.log(`${now} | ${date}`);
-    //   console.log(now > date);
-    //   if (now > date) return true;
-    //   return false;
-    // },
   },
 
   data() {
     return {
-      schedule: [
+      reports: [
         {
           day: "Пн",
           slots: [

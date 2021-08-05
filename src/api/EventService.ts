@@ -13,6 +13,9 @@ export default {
     getSchedule() {
         return apiClient.get('/schedule');
     },
+    deleteSlot(dayId: number) {
+        return apiClient.delete(`/schedule/${dayId}`);
+    },
     getPatientById(id: number) {
         return apiClient.get(`/patients/${id}`)
     },
