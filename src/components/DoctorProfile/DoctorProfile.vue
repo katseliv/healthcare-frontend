@@ -20,6 +20,13 @@
       <el-tab-pane label="Результаты осмотра" name="second">
         <Report />
       </el-tab-pane>
+      <el-tab-pane
+        class="profile__tab flex"
+        label="Настройка расписания"
+        name="third"
+      >
+        <ScheduleSettings />
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -29,6 +36,7 @@ import { defineComponent } from "vue";
 import { mapState } from "vuex";
 
 import Schedule from "./Schedule.vue";
+import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
 
 export default defineComponent({
@@ -42,6 +50,7 @@ export default defineComponent({
   components: {
     Schedule,
     Report,
+    ScheduleSettings,
   },
   computed: {
     ...mapState(["doctorProfile"]),

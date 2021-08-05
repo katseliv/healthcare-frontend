@@ -5,24 +5,31 @@
     :key="day.id"
     :data="day.slots"
     :row-class-name="tableRowClassName"
-    style="max-width: 200px"
+    style="max-width: 220px"
   >
-    <el-table-column :label="day.day" prop="time" width="100"></el-table-column>
-    <el-table-column>
+    <el-table-column :label="day.day" prop="time" width="100">
+    </el-table-column>
+    <el-table-column prop="id">
       <el-button icon="el-icon-delete" class="delete-button" size="small"
         >Удалить</el-button
       >
       <router-link :to="{ name: 'addReport' }">
-        <el-button class="report-button" icon="el-icon-edit" size="small"
+        <el-button
+          class="report-button"
+          icon="el-icon-edit"
+          size="small"
+          style="width: 100px"
           >Отчёт</el-button
         >
       </router-link>
     </el-table-column>
+    <!-- <el-button size="small" @click="deleteDay(day.id)">Выходной</el-button> -->
   </el-table>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { mapState } from "vuex";
 import EventService from "../../api/EventService";
 
 export default defineComponent({
@@ -42,25 +49,39 @@ export default defineComponent({
     isExpired(time: string) {
       let now = new Date();
       let date = new Date(time);
-      console.log(`${now} | ${date}`);
-      console.log(now > date);
       if (now > date) return true;
       return false;
     },
+    // deleteDay(dayId: number) {
+    //   EventService.deleteSlot(dayId);
+    //   EventService.getSchedule()
+    //     .then((response) => {
+    //       this.schedule = response.data;
+    //     })
+    //     .catch((error) => console.log(error));
+    // },
   },
   created() {
     EventService.getSchedule()
       .then((response) => {
         this.schedule = response.data;
+        for (let weekend = this.weekends.length - 1; weekend >= 0; weekend--) {
+          console.log(weekend);
+          console.log(this.weekends[weekend]);
+          this.schedule.splice(this.weekends[weekend] - 1, 1);
+        }
       })
       .catch((error) => console.log(error));
   },
   data() {
     return {
       schedule: [],
+      weekends: [6, 7],
     };
   },
-  computed: {},
+  computed: {
+    ...mapState([]),
+  },
 });
 </script>
 
