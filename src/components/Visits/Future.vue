@@ -37,6 +37,7 @@ export default defineComponent({
       EventService.deleteVisitById(id).catch((error) => {
         console.log(error);
       });
+      this.$emit("updateVisits");
     },
   },
 

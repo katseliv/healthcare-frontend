@@ -4,7 +4,7 @@
       <History :oldVisits="oldVisits" />
     </el-tab-pane>
     <el-tab-pane label="Future" name="second">
-      <Future :newVisits="newVisits" />
+      <Future :newVisits="newVisits" @update-visits="getVisits" />
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -33,27 +33,29 @@ export default defineComponent({
     mock() {
       console.log("Работает");
     },
-  },
-
-  async created() {
-    const visits = await EventService.getVisitsByPatientId(1)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        return console.log(error);
-      });
-    await visits.forEach(async (visit: any) => {
-      visit.doctorName = await EventService.getDoctorById(visit.doctorId)
+    async getVisits() {
+      const visits = await EventService.getVisitsByPatientId(1)
         .then((response) => {
-          return response.data.fullName;
+          return response.data;
         })
         .catch((error) => {
           return console.log(error);
         });
-    });
-    this.oldVisits = visits.filter((visit: any) => visit.status === "old");
-    this.newVisits = visits.filter((visit: any) => visit.status === "new");
+      await visits.forEach(async (visit: any) => {
+        visit.doctorName = await EventService.getDoctorById(visit.doctorId)
+          .then((response) => {
+            return response.data.fullName;
+          })
+          .catch((error) => {
+            return console.log(error);
+          });
+      });
+      this.oldVisits = visits.filter((visit: any) => visit.status === "old");
+      this.newVisits = visits.filter((visit: any) => visit.status === "new");
+    },
+  },
+  created() {
+    this.getVisits();
   },
 });
 </script>
