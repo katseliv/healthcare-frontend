@@ -10,6 +10,9 @@ const apiClient = axios.create({
 })
 
 const EventService = {
+
+
+
     getSchedule() {
         return apiClient.get('/schedule');
     },
