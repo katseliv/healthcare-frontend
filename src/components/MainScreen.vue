@@ -6,11 +6,20 @@
 </template>
 
 <script>
+import EventService from "@/api/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   data() {
     return {};
+  },
+  async mounted() {
+    await EventService.getPatientById(1).then((resolve) => {
+      console.log(resolve.body);
+    });
+    await EventService.getDoctorById(2).then((resolve) => {
+      console.log(resolve.body);
+    });
   },
 });
 </script>
