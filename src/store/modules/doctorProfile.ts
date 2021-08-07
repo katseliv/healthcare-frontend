@@ -1,16 +1,15 @@
+import EventService from '@/api/EventService';
 import Doctor from '@/models/doctor.model';
-import router from '@/router';
 
 const doctorProfile = {
-	namespaced: true,
 	state: () => ({
-		id: 1,
-		fullName: "Admin",
-		eMail: "doctor@gmail.com",
-		age: 12,
-		totalStage: 3,
-		specialties: ["Хирург", "Терапевт"],
-		weekends: [5, 7]
+		id: 0,
+		fullName: "",
+		eMail: "",
+		age: 0,
+		totalStage: 0,
+		specialties: [],
+		weekends: [6, 7]
 	} as Doctor),
 	mutations: {
 		SET_WEEKEND(state: any, dayNum: number) {
@@ -18,9 +17,27 @@ const doctorProfile = {
 		},
 		RESET_WEEKENDS(state: any) {
 			state.weekends = [];
+		},
+		UPDATE_DOCTOR_PROFILE(state: any, payload: any) {
+			state.id = payload.id;
+			state.fullName = payload.fullName;
+			state.age = payload.age;
+			state.eMail = payload.email;
+			state.specialties = payload.specialties;
+			state.totalStage = payload.totalStage;
 		}
 	},
 	actions: {
+		updateDoctorProfile(context: any, id: number) {
+			console.log(context);
+			EventService.getDoctorById(id)
+				.then((response: any) => {
+					context.commit('UPDATE_DOCTOR_PROFILE', response.data);
+				})
+				.catch((error: any) => {
+					console.log(error);
+				})
+		},
 		resetWeekends(context: any) {
 			context.commit('RESET_WEEKENDS');
 		},

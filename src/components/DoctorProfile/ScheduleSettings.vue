@@ -14,7 +14,7 @@
           v-for="day in days"
           :label="day"
           :key="day"
-          @dblclick="selectDay(day)"
+          @dblclick="addWeekend(day)"
           >{{ day }}</el-checkbox-button
         >
       </el-checkbox-group>
@@ -26,13 +26,13 @@
     </el-form-item>
     <el-form-item v-if="editMode">
       <el-button type="primary" @click="saveChanges">Готово</el-button>
-      <el-button type="info" @click="reset">Сбросить</el-button>
+      <el-button type="info" @click="resetWeekends">Сбросить</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 const weekDays = [
   "Понедельник",
   "Вторник",
@@ -85,13 +85,14 @@ export default {
     },
   },
   methods: {
-    selectDay(day) {
-      if (!this.editMode) return;
-      this.$store.dispatch("doctorProfile/addWeekend", day, { root: true });
-    },
-    reset() {
-      this.$store.dispatch("doctorProfile/resetWeekends", null, { root: true });
-    },
+    ...mapActions(["addWeekend", "resetWeekends"]),
+    // selectDay(day) {
+    //   if (!this.editMode) return;
+    //   this.$store.dispatch("doctorProfile/addWeekend", day, { root: true });
+    // },
+    // reset() {
+    //   this.$store.dispatch("doctorProfile/resetWeekends", null, { root: true });
+    // },
     onSubmit() {
       console.log("sfgfs");
     },

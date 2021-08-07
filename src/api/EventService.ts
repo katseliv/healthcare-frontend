@@ -1,8 +1,7 @@
-import Visit from "@/models/visit.model";
 import axios from "axios"
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:8081/api',
+    baseURL: 'http://localhost:3000',
     withCredentials: false,
     headers: {
         Accept: 'application/json',

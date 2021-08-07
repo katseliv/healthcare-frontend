@@ -36,13 +36,17 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 import Schedule from "./Schedule.vue";
 import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
+import doctorProfile from "@/store/modules/doctorProfile";
 
 export default defineComponent({
+  created() {
+    this.updateDoctorProfile(1);
+  },
   data() {
     return {
       activeName: "first",
@@ -59,6 +63,7 @@ export default defineComponent({
     ...mapState(["doctorProfile"]),
   },
   methods: {
+    ...mapActions(["updateDoctorProfile"]),
     updateSchedule() {
       (this.$refs.schedule as any).cutWeekends();
       console.log("updated");
