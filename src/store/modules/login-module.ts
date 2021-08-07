@@ -1,12 +1,11 @@
-import { loginAPI } from '../../../mock-server/auth';
+import EventService from '@/api/EventService';
 import router from '@/router';
 
 const loginModule = {
   state: () => ({
     formData: {
       username: "",
-      password: "",
-      rememberMe: false
+      password: ""
     },
     error: ""
   }),
@@ -21,13 +20,13 @@ const loginModule = {
   actions: {
     login(context: any) {
       context.commit('SET_ERROR', '');
-      loginAPI(context.state.formData).then(userExist => {
-        if (userExist) {
-          router.push('/portal');
-        } else {
-          context.commit('SET_ERROR', 'Неверный логин или пароль');
-        }
-      })
+      EventService.login(context.state.formData)
+        .then((response: any) => {
+          if (response) router.push('/portal');
+        })
+        .catch((error: any) => {
+          context.commit('SET_ERROR', error);
+        })
     }
   }
 };

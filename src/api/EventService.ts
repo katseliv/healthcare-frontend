@@ -11,8 +11,12 @@ const apiClient = axios.create({
 
 const EventService = {
 
-
-
+    login(formData: any) {
+        const data = new FormData();
+        data.set('username', formData.username);
+        data.set('password', formData.password);
+        return apiClient.post('/user/login', data);
+    },
     getSchedule() {
         return apiClient.get('/schedule');
     },
@@ -34,7 +38,9 @@ const EventService = {
     },
     getDoctorById(id: number) {
         return apiClient.get(`/doctors/${id}`)
+    },
+    getAdminById(id: number) {
+        return apiClient.get(`/admins/${id}`)
     }
-
 }
 export default EventService
