@@ -8,6 +8,8 @@ module.exports = {
                     '^/api': ''
                 }
             }
-        }
+        },
+        compress: true,
+        disableHostCheck: true
     }
 }
