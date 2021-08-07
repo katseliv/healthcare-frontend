@@ -5,13 +5,22 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ doctorProfile.fullName }}
+        {{ fullName }}
       </h4>
-      <p><span>Email:</span> {{ doctorProfile.eMail }}</p>
-      <h5>Специальности:</h5>
+      <p><span>Email:</span> {{ doctorProfile.email }}</p>
+      <p>
+        <span>Рейтинг:</span> {{ doctorProfile.rating }}
+        <el-rate
+          style="display: inline"
+          v-model="doctorProfile.rating"
+          disabled
+        >
+        </el-rate>
+      </p>
+      <!-- <h5>Специальности:</h5>
       <p v-for="specitality in doctorProfile.specialties" :key="specitality">
         {{ specitality }}
-      </p>
+      </p> -->
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
@@ -36,16 +45,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 import Schedule from "./Schedule.vue";
 import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
-import doctorProfile from "@/store/modules/doctorProfile";
 
 export default defineComponent({
   created() {
-    this.updateDoctorProfile(1);
+    this.updateDoctorProfile(2);
   },
   data() {
     return {
@@ -61,6 +69,7 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["doctorProfile"]),
+    ...mapGetters(["fullName"]),
   },
   methods: {
     ...mapActions(["updateDoctorProfile"]),

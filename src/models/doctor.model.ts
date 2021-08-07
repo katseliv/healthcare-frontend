@@ -1,9 +1,10 @@
-import Admin from "./admin.model";
+import User from "./user.model";
 
-interface Doctor extends Admin {
-	age: number,
-	specialties: Array<string>,
-	totalStage: number,
+interface Doctor extends User {
+	first_name: string,
+	mid_name: string,
+	last_name: string,
+	rating: number,
 	weekends: Array<number>
 }
 

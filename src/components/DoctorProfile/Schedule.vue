@@ -54,21 +54,17 @@ export default defineComponent({
       return false;
     },
     cutWeekends() {
-      EventService.getSchedule()
-        .then((response) => {
-          this.schedule = response.data;
-          for (
-            let weekend = this.doctorProfile.weekends.length - 1;
-            weekend >= 0;
-            weekend--
-          ) {
-            this.schedule.splice(
-              (this.doctorProfile.weekends[weekend] as any) - 1,
-              1
-            );
-          }
-        })
-        .catch((error) => console.log(error));
+      this.schedule = this.doctorProfile.schedule;
+      for (
+        let weekend = this.doctorProfile.weekends.length - 1;
+        weekend >= 0;
+        weekend--
+      ) {
+        this.schedule.splice(
+          (this.doctorProfile.weekends[weekend] as any) - 1,
+          1
+        );
+      }
     },
     // deleteDay(dayId: number) {
     //   EventService.deleteSlot(dayId);
