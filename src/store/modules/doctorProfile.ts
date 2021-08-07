@@ -10,7 +10,7 @@ const doctorProfile = {
 		age: 12,
 		totalStage: 3,
 		specialties: ["Хирург", "Терапевт"],
-		weekends: [5]
+		weekends: [5, 7]
 	} as Doctor),
 	mutations: {
 		SET_WEEKEND(state: any, dayNum: number) {

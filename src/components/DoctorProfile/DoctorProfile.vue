@@ -15,7 +15,7 @@
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
-        <Schedule />
+        <Schedule :doctorProfile="doctorProfile" ref="schedule" />
       </el-tab-pane>
       <el-tab-pane label="Результаты осмотра" name="second">
         <Report />
@@ -25,7 +25,10 @@
         label="Настройка расписания"
         name="third"
       >
-        <ScheduleSettings />
+        <ScheduleSettings
+          :doctorProfile="doctorProfile"
+          @update-weekends="updateSchedule"
+        />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -54,6 +57,12 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["doctorProfile"]),
+  },
+  methods: {
+    updateSchedule() {
+      (this.$refs.schedule as any).cutWeekends();
+      console.log("updated");
+    },
   },
 });
 </script>

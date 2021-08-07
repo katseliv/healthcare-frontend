@@ -25,14 +25,14 @@
       >
     </el-form-item>
     <el-form-item v-if="editMode">
-      <el-button type="primary" @click="editMode = !editMode">Готово</el-button>
+      <el-button type="primary" @click="saveChanges">Готово</el-button>
       <el-button type="info" @click="reset">Сбросить</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState } from "vuex";
 const weekDays = [
   "Понедельник",
   "Вторник",
@@ -44,6 +44,7 @@ const weekDays = [
 ];
 
 export default {
+  props: ["doctorProfile"],
   data() {
     return {
       days: weekDays,
@@ -51,7 +52,6 @@ export default {
     };
   },
   computed: {
-    ...mapState(["doctorProfile"]),
     weekends() {
       let arr = [];
       for (let weekend in this.doctorProfile.weekends) {
@@ -84,16 +84,6 @@ export default {
       return arr;
     },
   },
-  //   beforeUpdate() {
-  //     for (let i = 1; i <= 7; i++) {
-  //       this.checkboxGroup.push(false);
-  //       for (let j = 0; j < this.doctorProfile.weekend.length; i++) {
-  //         if (this.doctorProfile.weekends[j] === i) {
-  //           this.checkboxGroup[i - 1] = true;
-  //         }
-  //       }
-  //     }
-  //  },
   methods: {
     selectDay(day) {
       if (!this.editMode) return;
@@ -103,7 +93,11 @@ export default {
       this.$store.dispatch("doctorProfile/resetWeekends", null, { root: true });
     },
     onSubmit() {
-      console.log(this.doctorProfile.weekends);
+      console.log("sfgfs");
+    },
+    saveChanges() {
+      this.editMode = !this.editMode;
+      this.$emit("update-weekends");
     },
   },
 };
