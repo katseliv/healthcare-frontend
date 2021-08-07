@@ -15,7 +15,7 @@
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
-        <Schedule />
+        <Schedule :doctorProfile="doctorProfile" ref="schedule" />
       </el-tab-pane>
       <el-tab-pane label="Результаты осмотра" name="second">
         <Report />
@@ -25,7 +25,10 @@
         label="Настройка расписания"
         name="third"
       >
-        <ScheduleSettings />
+        <ScheduleSettings
+          :doctorProfile="doctorProfile"
+          @update-weekends="updateSchedule"
+        />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -33,13 +36,17 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 import Schedule from "./Schedule.vue";
 import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
+import doctorProfile from "@/store/modules/doctorProfile";
 
 export default defineComponent({
+  created() {
+    this.updateDoctorProfile(1);
+  },
   data() {
     return {
       activeName: "first",
@@ -54,6 +61,13 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["doctorProfile"]),
+  },
+  methods: {
+    ...mapActions(["updateDoctorProfile"]),
+    updateSchedule() {
+      (this.$refs.schedule as any).cutWeekends();
+      console.log("updated");
+    },
   },
 });
 </script>

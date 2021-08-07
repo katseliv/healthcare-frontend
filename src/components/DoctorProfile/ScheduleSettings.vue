@@ -14,7 +14,7 @@
           v-for="day in days"
           :label="day"
           :key="day"
-          @dblclick="selectDay(day)"
+          @dblclick="addWeekend(day)"
           >{{ day }}</el-checkbox-button
         >
       </el-checkbox-group>
@@ -25,8 +25,8 @@
       >
     </el-form-item>
     <el-form-item v-if="editMode">
-      <el-button type="primary" @click="editMode = !editMode">Готово</el-button>
-      <el-button type="info" @click="reset">Сбросить</el-button>
+      <el-button type="primary" @click="saveChanges">Готово</el-button>
+      <el-button type="info" @click="resetWeekends">Сбросить</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -44,6 +44,7 @@ const weekDays = [
 ];
 
 export default {
+  props: ["doctorProfile"],
   data() {
     return {
       days: weekDays,
@@ -51,7 +52,6 @@ export default {
     };
   },
   computed: {
-    ...mapState(["doctorProfile"]),
     weekends() {
       let arr = [];
       for (let weekend in this.doctorProfile.weekends) {
@@ -84,26 +84,21 @@ export default {
       return arr;
     },
   },
-  //   beforeUpdate() {
-  //     for (let i = 1; i <= 7; i++) {
-  //       this.checkboxGroup.push(false);
-  //       for (let j = 0; j < this.doctorProfile.weekend.length; i++) {
-  //         if (this.doctorProfile.weekends[j] === i) {
-  //           this.checkboxGroup[i - 1] = true;
-  //         }
-  //       }
-  //     }
-  //  },
   methods: {
-    selectDay(day) {
-      if (!this.editMode) return;
-      this.$store.dispatch("doctorProfile/addWeekend", day, { root: true });
-    },
-    reset() {
-      this.$store.dispatch("doctorProfile/resetWeekends", null, { root: true });
-    },
+    ...mapActions(["addWeekend", "resetWeekends"]),
+    // selectDay(day) {
+    //   if (!this.editMode) return;
+    //   this.$store.dispatch("doctorProfile/addWeekend", day, { root: true });
+    // },
+    // reset() {
+    //   this.$store.dispatch("doctorProfile/resetWeekends", null, { root: true });
+    // },
     onSubmit() {
-      console.log(this.doctorProfile.weekends);
+      console.log("sfgfs");
+    },
+    saveChanges() {
+      this.editMode = !this.editMode;
+      this.$emit("update-weekends");
     },
   },
 };
