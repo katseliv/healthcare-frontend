@@ -33,6 +33,7 @@ import { mapState } from "vuex";
 import EventService from "../../api/EventService";
 
 export default defineComponent({
+  props: ["doctorProfile"],
   methods: {
     tableRowClassName({ row }: any) {
       let className = "";
@@ -52,6 +53,23 @@ export default defineComponent({
       if (now > date) return true;
       return false;
     },
+    cutWeekends() {
+      EventService.getSchedule()
+        .then((response) => {
+          this.schedule = response.data;
+          for (
+            let weekend = this.doctorProfile.weekends.length - 1;
+            weekend >= 0;
+            weekend--
+          ) {
+            this.schedule.splice(
+              (this.doctorProfile.weekends[weekend] as any) - 1,
+              1
+            );
+          }
+        })
+        .catch((error) => console.log(error));
+    },
     // deleteDay(dayId: number) {
     //   EventService.deleteSlot(dayId);
     //   EventService.getSchedule()
@@ -62,25 +80,15 @@ export default defineComponent({
     // },
   },
   created() {
-    EventService.getSchedule()
-      .then((response) => {
-        this.schedule = response.data;
-        for (let weekend = this.weekends.length - 1; weekend >= 0; weekend--) {
-          console.log(weekend);
-          console.log(this.weekends[weekend]);
-          this.schedule.splice(this.weekends[weekend] - 1, 1);
-        }
-      })
-      .catch((error) => console.log(error));
+    this.cutWeekends();
   },
   data() {
     return {
       schedule: [],
-      weekends: [6, 7],
     };
   },
   computed: {
-    ...mapState([]),
+    //...mapState(["doctorProfile"]),
   },
 });
 </script>
