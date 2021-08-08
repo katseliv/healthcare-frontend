@@ -9,38 +9,41 @@
     class="form"
   >
     <h2>Регистрация</h2>
-    <el-form-item label="Имя" prop="name">
-      <el-input v-model="patientRegistration.name"></el-input>
+    <el-form-item label="Имя" prop="first_name">
+      <el-input v-model="patientRegistration.first_name"></el-input>
     </el-form-item>
-    <el-form-item label="Фамилия" prop="surname">
-      <el-input v-model="patientRegistration.surname"></el-input>
+    <el-form-item label="Фамилия" prop="mid_name">
+      <el-input v-model="patientRegistration.mid_name"></el-input>
     </el-form-item>
-    <el-form-item label="Отчество" prop="parentName">
-      <el-input v-model="patientRegistration.parentName"></el-input>
+    <el-form-item label="Отчество" prop="last_name">
+      <el-input v-model="patientRegistration.last_name"></el-input>
     </el-form-item>
     <el-form-item label="Пол" prop="sex">
       <el-radio-group v-model="patientRegistration.sex">
-        <el-radio label="male">Мужский</el-radio>
+        <el-radio label="M">Мужский</el-radio>
         <br />
-        <el-radio label="female">Женский</el-radio>
+        <el-radio label="F">Женский</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="Возраст" prop="age">
       <el-input type="number" v-model="patientRegistration.age"></el-input>
     </el-form-item>
-    <el-form-item label="E-mail" prop="eMail">
-      <el-input type="email" v-model="patientRegistration.eMail"></el-input>
+    <el-form-item label="Login" prop="login">
+      <el-input type="email" v-model="patientRegistration.login"></el-input>
+    </el-form-item>
+    <el-form-item label="E-mail" prop="email">
+      <el-input type="email" v-model="patientRegistration.email"></el-input>
+    </el-form-item>
+    <el-form-item label="Номер телефона" prop="phone_number">
+      <el-input
+        type="tel"
+        v-model="patientRegistration.phone_number"
+      ></el-input>
     </el-form-item>
     <el-form-item label="Пароль" prop="password">
       <el-input
         type="password"
         v-model="patientRegistration.password"
-      ></el-input>
-    </el-form-item>
-    <el-form-item label="Повторите пароль" prop="passwordConfirmation">
-      <el-input
-        type="password"
-        v-model="patientRegistration.passwordConfirmation"
       ></el-input>
     </el-form-item>
     <el-form-item>
@@ -52,29 +55,30 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import PatientReg from "@/models/patientReg.model";
+import EventService from "@/api/EventService";
 
 export default defineComponent({
   data() {
     return {
       patientRegistration: {} as PatientReg,
       rules: {
-        name: [
+        first_name: [
           {
             required: true,
             message: "Введите ваше имя",
             trigger: "blur",
           },
         ],
-        surname: [
+        mid_name: [
           {
             required: true,
             message: "Введите вашу фамилию",
             trigger: "blur",
           },
         ],
-        parentName: [
+        last_name: [
           {
-            required: false,
+            required: true,
             message: "Введите ваше отчество",
             trigger: "blur",
           },
@@ -86,7 +90,14 @@ export default defineComponent({
             trigger: "blur",
           },
         ],
-        eMail: [
+        login: [
+          {
+            required: true,
+            message: "Введите ваш логин",
+            trigger: "blur",
+          },
+        ],
+        email: [
           {
             required: true,
             message: "Введите ваш e-mail",
@@ -107,10 +118,10 @@ export default defineComponent({
             trigger: "blur",
           },
         ],
-        passwordConfirmation: [
+        phone_number: [
           {
             required: true,
-            message: "Повторите ваш пароль",
+            message: "Введите ваш телефон",
             trigger: "blur",
           },
         ],
@@ -119,7 +130,7 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      console.log(this.patientRegistration);
+      EventService.postPatient(this.patientRegistration);
     },
   },
 });

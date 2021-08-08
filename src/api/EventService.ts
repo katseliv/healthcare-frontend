@@ -30,6 +30,9 @@ const EventService = {
     putPatientById(id: number, patientData: any) {
         return apiClient.put(`/patients/${id}`, patientData)
     },
+    postPatient(data: any) {
+        return apiClient.post('/patients', { ...data })
+    },
     getVisitsByPatientId(patientId: number) {
         return apiClient.get(`/appointments?patientId=${patientId}`)
     },
@@ -43,5 +46,6 @@ const EventService = {
     getAdminById(id: number) {
         return apiClient.get(`/admins/${id}`)
     }
+
 }
 export default EventService
