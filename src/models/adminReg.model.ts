@@ -1,4 +1,3 @@
-
 interface AdminReg {
 	login: string,
 	email: string,

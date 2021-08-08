@@ -30,6 +30,31 @@
         <el-input v-model="registration.last_name"></el-input>
       </el-form-item>
 
+      <el-form-item
+        v-for="(speciality, i) in currentSpecialities"
+        :key="speciality"
+        :label="'Специальность ' + ++i"
+        prop="speciality"
+      >
+        <el-input type="date" v-model="speciality.receive_date"> </el-input>
+
+        <el-select v-model="speciality.id" placeholder="Специальность">
+          <el-option
+            v-for="spec in allSpecialities"
+            :key="spec.id"
+            :value="spec.id"
+            :label="spec.name"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button-group>
+          <el-button type="primary" @click="addSpeciality">+</el-button>
+          <el-button type="primary" @click="removeSpeciality">-</el-button>
+        </el-button-group>
+      </el-form-item>
+
       <!-- <h4>Специальности</h4>
       <el-form-item
         v-for="(speciality, i) in registration.doctorInputs.specialities"
@@ -63,7 +88,7 @@
   </el-form>
 </template>
 
-<script >
+<script>
 import EventService from "@/api/EventService";
 import AdminReg from "@/models/adminReg.model";
 export default {
@@ -73,6 +98,26 @@ export default {
       registration: {
         rating: 0,
       },
+      allSpecialities: [
+        {
+          name: "Терапевт",
+          id: 1,
+        },
+        {
+          name: "Смерть",
+          id: 2,
+        },
+      ],
+      currentSpecialities: [
+        {
+          id: 0,
+          receive_date: "",
+        },
+        {
+          id: 1,
+          receive_date: "",
+        },
+      ],
       rules: {
         login: [
           {
@@ -119,8 +164,17 @@ export default {
       },
     };
   },
+  async created() {
+    this.allSpecialities = await EventService.getSpecialities().then(
+      (response) => {
+        return response.data;
+      }
+    );
+    console.log(this.allSpecialities);
+  },
   methods: {
     onSubmit() {
+      console.log(this.currentSpecialities);
       if (this.userType === "admin") {
         const data = {
           login: this.registration.login,
@@ -132,12 +186,15 @@ export default {
         EventService.postDoctor(this.registration);
       }
     },
-    // addSpeciality() {
-    //   this.registration.doctorInputs.specialities.push("");
-    // },
-    // removeSpeciality() {
-    //   this.registration.doctorInputs.specialities.pop("");
-    // },
+    addSpeciality() {
+      this.currentSpecialities.push({
+        id: 0,
+        receive_date: "",
+      });
+    },
+    removeSpeciality() {
+      this.currentSpecialities.pop("");
+    },
   },
 };
 </script>
@@ -151,6 +208,9 @@ export default {
 @media (max-width: 576px) {
   .form {
     padding: 0 10px;
+  }
+  .el-select .el-input {
+    width: 100px;
   }
 }
 </style>

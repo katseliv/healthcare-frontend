@@ -2,7 +2,7 @@
 interface PatientReg {
 	login: string,
 	email: string,
-	age: number,
+	birthdate: string,
 	sex: string,
 	first_name: string,
 	mid_name: string,
