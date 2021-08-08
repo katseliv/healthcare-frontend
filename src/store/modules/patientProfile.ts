@@ -40,7 +40,7 @@ const patientProfile = {
 		}
 	},
 	getters: {
-		fullName(state: any) {
+		patientName(state: any) {
 			return `${state.first_name} ${state.mid_name} ${state.last_name}`;
 		}
 	}

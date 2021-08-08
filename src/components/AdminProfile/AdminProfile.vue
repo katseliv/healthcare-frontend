@@ -5,9 +5,9 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ adminProfile.fullName }}
+        {{ adminName }}
       </h4>
-      <p><span>Email:</span> {{ adminProfile.eMail }}</p>
+      <p><span>Email:</span> {{ adminProfile.email }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab" label="Registration" name="first">
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 import AdminRegistration from "./AdminRegistration.vue";
 
@@ -34,8 +34,16 @@ export default defineComponent({
   components: {
     AdminRegistration,
   },
+  methods: {
+    ...mapActions(["updateAdminProfile"]),
+  },
+  created() {
+    this.updateAdminProfile(this.id);
+  },
   computed: {
     ...mapState(["adminProfile"]),
+    ...mapGetters(["adminName"]),
+    ...mapState("loginModule", ["id"]),
   },
 });
 </script>
