@@ -19,7 +19,7 @@ export default defineComponent({
     PatientProfile,
   },
   computed: {
-    ...mapState(["loginModule"]),
+    ...mapState("loginModule", ["role"]),
   },
 });
 </script>

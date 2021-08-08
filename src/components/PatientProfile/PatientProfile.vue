@@ -5,10 +5,10 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ patientProfile.fullName }}
+        {{ fullName }}
       </h4>
       <p><span>Sex:</span> {{ patientProfile.sex }}</p>
-      <p><span>Email:</span> {{ patientProfile.eMail }}</p>
+      <p><span>Email:</span> {{ patientProfile.email }}</p>
       <p><span>Age:</span> {{ patientProfile.age }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
@@ -30,14 +30,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import { mapActions } from "vuex";
 
 import PatientProfileSettings from "./PatientProfileSettings.vue";
 import Allergies from "./Allergies.vue";
 import Diseases from "./Diseases.vue";
 import Visits from "../Visits/Visits.vue";
-import patientProfile from "@/store/modules/patientProfile";
 
 export default defineComponent({
   data() {
@@ -51,7 +50,7 @@ export default defineComponent({
     ...mapActions(["updatePatientProfile"]),
   },
   created() {
-    this.updatePatientProfile(1);
+    this.updatePatientProfile(this.id);
   },
   components: {
     PatientProfileSettings,
@@ -61,6 +60,8 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["patientProfile"]),
+    ...mapGetters(["fullName"]),
+    ...mapState("loginModule", ["id"]),
   },
 });
 </script>
