@@ -1,13 +1,11 @@
-import Admin from "./admin.model";
 
-interface AdminReg extends Admin {
-	userType: string,
-
+interface AdminReg {
+	login: string,
+	email: string,
+	first_name: string,
+	mid_name: string,
+	last_name: string,
 	password: string,
-	passwordConfirmation: string,
-	id: undefined,
-	specialities: string[] | undefined,
-
 }
 
 export default AdminReg

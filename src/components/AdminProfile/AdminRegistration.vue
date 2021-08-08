@@ -19,7 +19,7 @@
       <el-input type="password" v-model="registration.password"></el-input>
     </el-form-item>
 
-    <div v-if="registration.userType === 'doctor'">
+    <div v-if="userType === 'doctor'">
       <el-form-item label="Имя" prop="first_name">
         <el-input v-model="registration.first_name"></el-input>
       </el-form-item>
@@ -30,7 +30,7 @@
         <el-input v-model="registration.last_name"></el-input>
       </el-form-item>
 
-      <h4>Специальности</h4>
+      <!-- <h4>Специальности</h4>
       <el-form-item
         v-for="(speciality, i) in registration.doctorInputs.specialities"
         v-bind:key="speciality.id"
@@ -48,11 +48,11 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="removeSpeciality">-</el-button>
-      </el-form-item>
+      </el-form-item> -->
     </div>
 
     <el-form-item label="Тип пользователя" prop="userType">
-      <el-radio-group v-model="registration.userType">
+      <el-radio-group v-model="userType">
         <el-radio label="admin">Админ</el-radio>
         <el-radio label="doctor">Доктор</el-radio>
       </el-radio-group>
@@ -63,41 +63,44 @@
   </el-form>
 </template>
 
-<script>
+<script lang="ts">
+import EventService from "@/api/EventService";
+import AdminReg from "@/models/adminReg.model";
 export default {
   data() {
     return {
-      registration: {
-        login: "doctorwho",
-        email: "doctorwho@gmail.ru",
-        first_name: "Ivan",
-        mid_name: "Ivanovich",
-        last_name: "Ivanov",
-        password: "123",
-      },
+      userType: "admin",
+      registration: {} as AdminReg,
       rules: {
-        name: [
+        login: [
+          {
+            required: true,
+            message: "Введите ваш логин",
+            trigger: "blur",
+          },
+        ],
+        first_name: [
           {
             required: true,
             message: "Введите ваше имя",
             trigger: "blur",
           },
         ],
-        surname: [
+        mid_name: [
           {
             required: true,
             message: "Введите вашу фамилию",
             trigger: "blur",
           },
         ],
-        parentName: [
+        last_name: [
           {
-            required: false,
+            required: true,
             message: "Введите ваше отчество",
             trigger: "blur",
           },
         ],
-        eMail: [
+        email: [
           {
             required: true,
             message: "Введите ваш e-mail",
@@ -111,54 +114,28 @@ export default {
             trigger: "blur",
           },
         ],
-        passwordConfirmation: [
-          {
-            required: true,
-            message: "Повторите ваш пароль",
-            trigger: "blur",
-          },
-        ],
-        userType: [
-          {
-            required: true,
-            message: "Выберите тип пользователя",
-            trigger: "blur",
-          },
-        ],
-        exp: [
-          {
-            required: true,
-            message: "Введите стаж",
-            trigger: "blur",
-          },
-        ],
-        speciality: [
-          {
-            required: true,
-            message: "Ввдите специальность",
-            trigger: "blur",
-          },
-        ],
       },
     };
   },
   methods: {
     onSubmit() {
-      const userType = this.registration.userType;
-      if (userType === "admin") {
+      if (this.userType === "admin") {
         const data = {
           login: this.registration.login,
           password: this.registration.password,
           email: this.registration.password,
         };
+        EventService.postAdmin(data);
+      } else if (this.userType === "doctor") {
+        EventService.postDoctor(this.registration);
       }
     },
-    addSpeciality() {
-      this.registration.doctorInputs.specialities.push("");
-    },
-    removeSpeciality() {
-      this.registration.doctorInputs.specialities.pop("");
-    },
+    // addSpeciality() {
+    //   this.registration.doctorInputs.specialities.push("");
+    // },
+    // removeSpeciality() {
+    //   this.registration.doctorInputs.specialities.pop("");
+    // },
   },
 };
 </script>

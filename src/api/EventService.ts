@@ -43,8 +43,15 @@ const EventService = {
     getAdminById(id: number) {
         return apiClient.get(`/admins/${id}`)
     },
+    postAdmin(data: any) {
+        return apiClient.post('/admins', { ...data })
+    },
+    postDoctor(data: any) {
+        return apiClient.post('/doctors', { ...data })
+    },
     postPatient(data: any) {
         return apiClient.post('/patients', { ...data })
     },
+
 }
 export default EventService
