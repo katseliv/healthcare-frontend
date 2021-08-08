@@ -123,7 +123,7 @@ export default {
         const data = {
           login: this.registration.login,
           password: this.registration.password,
-          email: this.registration.password,
+          email: this.registration.email,
         };
         EventService.postAdmin(data);
       } else if (this.userType === "doctor") {

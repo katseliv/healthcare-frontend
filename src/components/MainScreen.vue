@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import EventService from "@/api/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
