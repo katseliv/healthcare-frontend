@@ -64,6 +64,11 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: '/adminReg',
+    name: 'adminReg',
+    component: AdminRegistration
+  },
+  {
     path: '/review',
     name: 'addReview',
     component: ReviewForm

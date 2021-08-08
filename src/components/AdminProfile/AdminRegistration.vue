@@ -9,40 +9,28 @@
     class="form"
   >
     <h2>Регистрация администраторов и докторов</h2>
-    <el-form-item label="Имя" prop="name">
-      <el-input v-model="registration.userData.name"></el-input>
+    <el-form-item label="Логин" prop="login">
+      <el-input type="email" v-model="registration.login"></el-input>
     </el-form-item>
-    <el-form-item label="Фамилия" prop="surname">
-      <el-input v-model="registration.userData.surname"></el-input>
-    </el-form-item>
-    <el-form-item label="Отчество" prop="parentName">
-      <el-input v-model="registration.userData.parentName"></el-input>
-    </el-form-item>
-    <el-form-item label="E-mail" prop="eMail">
-      <el-input type="email" v-model="registration.userData.eMail"></el-input>
-    </el-form-item>
-    <el-form-item
-      v-if="registration.userType === 'doctor'"
-      label="Опыт"
-      prop="exp"
-    >
-      <el-input type="email" v-model="registration.userData.exp"></el-input>
+    <el-form-item label="E-mail" prop="email">
+      <el-input type="email" v-model="registration.email"></el-input>
     </el-form-item>
     <el-form-item label="Пароль" prop="password">
-      <el-input
-        type="password"
-        v-model="registration.userData.password"
-      ></el-input>
-    </el-form-item>
-    <el-form-item label="Повторите пароль" prop="passwordConfirmation">
-      <el-input
-        type="password"
-        v-model="registration.userData.passwordConfirmation"
-      ></el-input>
+      <el-input type="password" v-model="registration.password"></el-input>
     </el-form-item>
 
-    <div v-if="registration.userType === 'doctor'">
-      <h4>Специальности</h4>
+    <div v-if="userType === 'doctor'">
+      <el-form-item label="Имя" prop="first_name">
+        <el-input v-model="registration.first_name"></el-input>
+      </el-form-item>
+      <el-form-item label="Фамилия" prop="mid_name">
+        <el-input v-model="registration.mid_name"></el-input>
+      </el-form-item>
+      <el-form-item label="Отчество" prop="last_name">
+        <el-input v-model="registration.last_name"></el-input>
+      </el-form-item>
+
+      <!-- <h4>Специальности</h4>
       <el-form-item
         v-for="(speciality, i) in registration.doctorInputs.specialities"
         v-bind:key="speciality.id"
@@ -60,11 +48,11 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="removeSpeciality">-</el-button>
-      </el-form-item>
+      </el-form-item> -->
     </div>
 
     <el-form-item label="Тип пользователя" prop="userType">
-      <el-radio-group v-model="registration.userType">
+      <el-radio-group v-model="userType">
         <el-radio label="admin">Админ</el-radio>
         <el-radio label="doctor">Доктор</el-radio>
       </el-radio-group>
@@ -75,49 +63,44 @@
   </el-form>
 </template>
 
-<script>
+<script lang="ts">
+import EventService from "@/api/EventService";
+import AdminReg from "@/models/adminReg.model";
 export default {
   data() {
     return {
-      registration: {
-        userType: "admin",
-
-        userData: {
-          name: "",
-          surname: "",
-          parentName: "",
-          eMail: "",
-          password: "",
-          passwordСonfirmation: "",
-        },
-        doctorInputs: {
-          exp: "",
-          specialities: [""],
-        },
-      },
+      userType: "admin",
+      registration: {} as AdminReg,
       rules: {
-        name: [
+        login: [
+          {
+            required: true,
+            message: "Введите ваш логин",
+            trigger: "blur",
+          },
+        ],
+        first_name: [
           {
             required: true,
             message: "Введите ваше имя",
             trigger: "blur",
           },
         ],
-        surname: [
+        mid_name: [
           {
             required: true,
             message: "Введите вашу фамилию",
             trigger: "blur",
           },
         ],
-        parentName: [
+        last_name: [
           {
-            required: false,
+            required: true,
             message: "Введите ваше отчество",
             trigger: "blur",
           },
         ],
-        eMail: [
+        email: [
           {
             required: true,
             message: "Введите ваш e-mail",
@@ -131,47 +114,28 @@ export default {
             trigger: "blur",
           },
         ],
-        passwordConfirmation: [
-          {
-            required: true,
-            message: "Повторите ваш пароль",
-            trigger: "blur",
-          },
-        ],
-        userType: [
-          {
-            required: true,
-            message: "Выберите тип пользователя",
-            trigger: "blur",
-          },
-        ],
-        exp: [
-          {
-            required: true,
-            message: "Введите стаж",
-            trigger: "blur",
-          },
-        ],
-        speciality: [
-          {
-            required: true,
-            message: "Ввдите специальность",
-            trigger: "blur",
-          },
-        ],
       },
     };
   },
   methods: {
     onSubmit() {
-      console.log(this.registration);
+      if (this.userType === "admin") {
+        const data = {
+          login: this.registration.login,
+          password: this.registration.password,
+          email: this.registration.password,
+        };
+        EventService.postAdmin(data);
+      } else if (this.userType === "doctor") {
+        EventService.postDoctor(this.registration);
+      }
     },
-    addSpeciality() {
-      this.registration.doctorInputs.specialities.push("");
-    },
-    removeSpeciality() {
-      this.registration.doctorInputs.specialities.pop("");
-    },
+    // addSpeciality() {
+    //   this.registration.doctorInputs.specialities.push("");
+    // },
+    // removeSpeciality() {
+    //   this.registration.doctorInputs.specialities.pop("");
+    // },
   },
 };
 </script>
