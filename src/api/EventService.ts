@@ -18,9 +18,6 @@ const EventService = {
         data.set('password', formData.password);
         return apiClient.post('/user/login', data);
     },
-    getSchedule() {
-        return apiClient.get('/schedule');
-    },
     deleteSlot(dayId: number) {
         return apiClient.delete(`/schedule/${dayId}`);
     },
@@ -52,6 +49,8 @@ const EventService = {
     postPatient(data: any) {
         return apiClient.post('/patients', { ...data })
     },
-
+    // getSchedule(id: number, data: any) {
+    //     return apiClient.get(`/doctors/${id}/timerecord/schedule`, data)
+    // }
 }
 export default EventService
