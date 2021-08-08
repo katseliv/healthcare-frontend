@@ -1,7 +1,7 @@
 <template>
-  <DoctorProfile v-if="userType === 'doctor'" />
-  <AdminProfile v-if="userType === 'admin'" />
-  <PatientProfile v-if="userType === 'patient'" />
+  <DoctorProfile v-if="loginModule.role === 'DOCTOR'" />
+  <AdminProfile v-if="loginModule.role === 'ADMIN'" />
+  <PatientProfile v-if="loginModule.role === 'PATIENT'" />
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ export default defineComponent({
     PatientProfile,
   },
   computed: {
-    ...mapState(["userType"]),
+    ...mapState(["loginModule"]),
   },
 });
 </script>
