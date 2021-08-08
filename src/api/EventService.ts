@@ -26,6 +26,9 @@ const EventService = {
     putPatientById(id: number, patientData: any) {
         return apiClient.put(`/patients/${id}`, patientData)
     },
+    patchPatientById(id: number, patientData: any) {
+        return apiClient.patch(`/patients/${id}`, patientData)
+    },
     getPatientDiseases(id: number) {
         return apiClient.get(`/patients/${id}/diseases`)
     },
