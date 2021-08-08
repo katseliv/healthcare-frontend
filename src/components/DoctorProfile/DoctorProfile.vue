@@ -5,7 +5,7 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ fullName }}
+        {{ doctorName }}
       </h4>
       <p><span>Email:</span> {{ doctorProfile.email }}</p>
       <p>
@@ -69,7 +69,7 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["doctorProfile"]),
-    ...mapGetters(["fullName"]),
+    ...mapGetters(["doctorName"]),
   },
   methods: {
     ...mapActions(["updateDoctorProfile"]),

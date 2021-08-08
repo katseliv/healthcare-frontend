@@ -5,7 +5,7 @@
         <img :src="src" alt="avatar" />
       </el-avatar>
       <h4>
-        {{ fullName }}
+        {{ patientName }}
       </h4>
       <p><span>Sex:</span> {{ patientProfile.sex }}</p>
       <p><span>Email:</span> {{ patientProfile.email }}</p>
@@ -50,7 +50,7 @@ export default defineComponent({
     ...mapActions(["updatePatientProfile"]),
   },
   created() {
-    this.updatePatientProfile(this.id);
+    this.updatePatientProfile(this.loginModule.id);
   },
   components: {
     PatientProfileSettings,
@@ -60,8 +60,8 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["patientProfile"]),
-    ...mapGetters(["fullName"]),
-    ...mapState("loginModule", ["id"]),
+    ...mapGetters(["patientName"]),
+    ...mapState(["loginModule"]),
   },
 });
 </script>

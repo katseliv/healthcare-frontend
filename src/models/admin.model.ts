@@ -1,8 +1,5 @@
-import EntityModel from "@/models/entity.model"
+import User from "@/models/user.model"
 
-interface Admin extends EntityModel {
-	fullName: string,
-	eMail: string | undefined,
-}
+interface Admin extends User { }
 
 export default Admin

@@ -232,7 +232,7 @@ const doctorProfile = {
 		}
 	},
 	getters: {
-		fullName(state: any) {
+		doctorName(state: any) {
 			return `${state.first_name} ${state.mid_name} ${state.last_name}`;
 		}
 	}
