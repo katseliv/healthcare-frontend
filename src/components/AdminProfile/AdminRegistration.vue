@@ -63,14 +63,16 @@
   </el-form>
 </template>
 
-<script lang="ts">
+<script >
 import EventService from "@/api/EventService";
 import AdminReg from "@/models/adminReg.model";
 export default {
   data() {
     return {
       userType: "admin",
-      registration: {} as AdminReg,
+      registration: {
+        rating: 0,
+      },
       rules: {
         login: [
           {
