@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Visit from "@/models/visit.model";
 import EventService from "@/api/EventService";
 //import Doctor from "@/models/doctor.model";
 

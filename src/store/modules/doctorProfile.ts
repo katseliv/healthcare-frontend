@@ -27,21 +27,21 @@ const doctorProfile = {
 			{
 				id: 1,
 				day: "Пн",
-				date: "2021-06-26",
+				date: "2021-08-09",
 				slots: [
 					{
 						id: 1,
-						time: "2021-08-02T12:40:00",
+						time: "2021-08-09T12:40:00",
 						isFree: false
 					},
 					{
 						id: 2,
-						time: "2021-08-02T16:40:00",
+						time: "2021-08-09T16:40:00",
 						isFree: true
 					},
 					{
 						id: 3,
-						time: "2021-08-02T17:45:00",
+						time: "2021-08-09T17:45:00",
 						isFree: true
 					}
 				]
@@ -49,21 +49,21 @@ const doctorProfile = {
 			{
 				id: 2,
 				day: "Вт",
-				date: "2021-06-27",
+				date: "2021-08-10",
 				slots: [
 					{
 						id: 4,
-						time: "2021-08-03T17:20:00",
+						time: "2021-08-10T17:20:00",
 						isFree: true
 					},
 					{
 						id: 5,
-						time: "2021-08-03T17:50:00",
+						time: "2021-08-10T17:50:00",
 						isFree: true
 					},
 					{
 						id: 6,
-						time: "2021-08-03T18:30:00",
+						time: "2021-08-10T18:30:00",
 						isFree: true
 					}
 				]
@@ -71,21 +71,21 @@ const doctorProfile = {
 			{
 				id: 3,
 				day: "Ср",
-				date: "2021-06-28",
+				date: "2021-08-11",
 				slots: [
 					{
 						id: 7,
-						time: "2021-08-04T17:30:00",
+						time: "2021-08-11T17:30:00",
 						isFree: true
 					},
 					{
 						id: 8,
-						time: "2021-08-04T18:00:00",
+						time: "2021-08-11T18:00:00",
 						isFree: true
 					},
 					{
 						id: 9,
-						time: "2021-08-04T18:30:00",
+						time: "2021-08-11T18:30:00",
 						isFree: true
 					}
 				]
@@ -93,21 +93,21 @@ const doctorProfile = {
 			{
 				id: 4,
 				day: "Чт",
-				date: "2021-06-29",
+				date: "2021-08-12",
 				slots: [
 					{
 						id: 10,
-						time: "2021-08-05T17:30:00",
+						time: "2021-08-12T17:30:00",
 						isFree: true
 					},
 					{
 						id: 11,
-						time: "2021-08-05T18:00:00",
+						time: "2021-08-12T18:00:00",
 						isFree: true
 					},
 					{
 						id: 12,
-						time: "2021-08-05T18:30:00",
+						time: "2021-08-12T18:30:00",
 						isFree: true
 					}
 				]
@@ -115,21 +115,21 @@ const doctorProfile = {
 			{
 				id: 5,
 				day: "Пт",
-				date: "2021-06-30",
+				date: "2021-08-13",
 				slots: [
 					{
 						id: 13,
-						time: "2021-08-06T17:30:00",
+						time: "2021-08-13T17:30:00",
 						isFree: true
 					},
 					{
 						id: 14,
-						time: "2021-08-06T18:00:00",
+						time: "2021-08-13T18:00:00",
 						isFree: true
 					},
 					{
 						id: 15,
-						time: "2021-08-06T18:30:00",
+						time: "2021-08-13T18:30:00",
 						isFree: true
 					}
 				]
@@ -137,21 +137,21 @@ const doctorProfile = {
 			{
 				id: 6,
 				day: "Сб",
-				date: "2021-06-31",
+				date: "2021-08-14",
 				slots: [
 					{
 						id: 16,
-						time: "2021-08-07T17:30:00",
+						time: "2021-08-14T17:30:00",
 						isFree: true
 					},
 					{
 						id: 17,
-						time: "2021-08-07T18:00:00",
+						time: "2021-08-14T18:00:00",
 						isFree: true
 					},
 					{
 						id: 18,
-						time: "2021-08-07T18:30:00",
+						time: "2021-08-14T18:30:00",
 						isFree: true
 					}
 				]
@@ -159,21 +159,21 @@ const doctorProfile = {
 			{
 				id: 7,
 				day: "Вс",
-				date: "2021-06-01",
+				date: "2021-08-15",
 				slots: [
 					{
 						id: 19,
-						time: "2021-08-08T17:30:00",
+						time: "2021-08-15T17:30:00",
 						isFree: true
 					},
 					{
 						id: 20,
-						time: "2021-08-08T18:00:00",
+						time: "2021-08-15T18:00:00",
 						isFree: true
 					},
 					{
 						id: 21,
-						time: "2021-08-08T18:30:00",
+						time: "2021-08-15T18:30:00",
 						isFree: true
 					}
 				]
