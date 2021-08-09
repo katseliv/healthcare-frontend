@@ -59,7 +59,7 @@
   </el-form>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import { patientAPI } from "@/api/EventService";
 import PatientSettings from "@/models/pateinetSettings.model";
@@ -69,22 +69,23 @@ export default defineComponent({
   created() {
     setTimeout(() => {
       this.settings = { ...this.patientProfile };
+      delete this.settings.age;
     }, 1000);
   },
   data() {
     return {
-      settings: {} as PatientSettings,
+      settings: {},
       wrongPassword: false,
       notEnoughSymbols: false,
       success: false,
     };
   },
   methods: {
-    submit(settings: any) {
+    submit(settings) {
       if (settings.password !== settings.passwordConfirm) {
         this.wrongPassword = true;
-      } else if (settings.password.length < 8) {
-        this.notEnoughSymbols = true;
+        // } else if (settings.password.length < 8) {
+        //   this.notEnoughSymbols = true;
       } else {
         this.wrongPassword = false;
         this.notEnoughSymbols = false;
