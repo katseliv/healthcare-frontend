@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import EventService from "@/api/EventService";
+import { doctorAPI } from "@/api/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -75,13 +75,11 @@ export default defineComponent({
     };
   },
   async created() {
-    const specialities = await EventService.getSpecialities().then(
-      (response) => {
-        return response.data;
-      }
-    );
+    const specialities = await doctorAPI.getSpecialities().then((response) => {
+      return response.data;
+    });
     this.specialities = specialities;
-    const doctors = await EventService.getDoctors().then((response) => {
+    const doctors = await doctorAPI.getDoctors().then((response) => {
       return response.data;
     });
     this.doctors = doctors;
