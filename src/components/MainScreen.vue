@@ -17,16 +17,18 @@ export default defineComponent({
 
 <style scoped>
 .main-screen {
+  background-image: url("../assets/img/main-screen.png");
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 30px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 90vh;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
 }
 h1 {
   margin-bottom: 30px;
