@@ -39,17 +39,17 @@ export default defineComponent({
           slots: [
             {
               id: 1,
-              time: new Date(2021, 6, 26, 12, 40),
-              isFree: false,
+              time: new Date(2021, 8, 2, 12, 40),
+              isFree: true,
             },
             {
               id: 2,
-              time: new Date(2021, 6, 26, 16, 40),
+              time: new Date(2021, 8, 2, 16, 40),
               isFree: true,
             },
             {
               id: 3,
-              time: new Date(2021, 6, 26, 17, 45),
+              time: new Date(2021, 8, 2, 17, 45),
               isFree: true,
             },
           ],
@@ -59,17 +59,17 @@ export default defineComponent({
           slots: [
             {
               id: 4,
-              time: new Date(2021, 6, 27, 17, 20),
+              time: new Date(2021, 8, 3, 17, 20),
               isFree: true,
             },
             {
               id: 5,
-              time: new Date(2021, 6, 27, 17, 50),
+              time: new Date(2021, 8, 3, 17, 50),
               isFree: true,
             },
             {
               id: 6,
-              time: new Date(2021, 6, 27, 18, 30),
+              time: new Date(2021, 8, 3, 18, 30),
               isFree: true,
             },
           ],
@@ -79,17 +79,17 @@ export default defineComponent({
           slots: [
             {
               id: 7,
-              time: new Date(2021, 6, 28, 18, 30),
+              time: new Date(2021, 8, 4, 18, 30),
               isFree: true,
             },
             {
               id: 8,
-              time: new Date(2021, 6, 28, 18, 30),
+              time: new Date(2021, 8, 4, 18, 30),
               isFree: true,
             },
             {
               id: 9,
-              time: new Date(2021, 6, 28, 18, 30),
+              time: new Date(2021, 8, 4, 18, 30),
               isFree: true,
             },
           ],
@@ -99,17 +99,17 @@ export default defineComponent({
           slots: [
             {
               id: 10,
-              time: new Date(2021, 6, 29, 18, 30),
+              time: new Date(2021, 8, 5, 18, 30),
               isFree: true,
             },
             {
               id: 11,
-              time: new Date(2021, 6, 29, 18, 30),
+              time: new Date(2021, 8, 5, 18, 30),
               isFree: true,
             },
             {
               id: 12,
-              time: new Date(2021, 6, 29, 18, 30),
+              time: new Date(2021, 8, 5, 18, 30),
               isFree: true,
             },
           ],
@@ -119,17 +119,17 @@ export default defineComponent({
           slots: [
             {
               id: 13,
-              time: new Date(2021, 6, 30, 18, 30),
+              time: new Date(2021, 8, 6, 18, 30),
               isFree: true,
             },
             {
               id: 14,
-              time: new Date(2021, 6, 30, 18, 30),
+              time: new Date(2021, 8, 6, 18, 30),
               isFree: true,
             },
             {
               id: 15,
-              time: new Date(2021, 6, 30, 18, 30),
+              time: new Date(2021, 8, 6, 18, 30),
               isFree: true,
             },
           ],
@@ -139,17 +139,17 @@ export default defineComponent({
           slots: [
             {
               id: 16,
-              time: new Date(2021, 6, 31, 18, 30),
+              time: new Date(2021, 8, 7, 18, 30),
               isFree: true,
             },
             {
               id: 17,
-              time: new Date(2021, 6, 31, 18, 30),
+              time: new Date(2021, 8, 7, 18, 30),
               isFree: true,
             },
             {
               id: 18,
-              time: new Date(2021, 6, 31, 18, 30),
+              time: new Date(2021, 8, 7, 18, 30),
               isFree: true,
             },
           ],
@@ -159,17 +159,17 @@ export default defineComponent({
           slots: [
             {
               id: 19,
-              time: new Date(2021, 7, 1, 18, 30),
+              time: new Date(2021, 8, 8, 18, 30),
               isFree: true,
             },
             {
               id: 20,
-              time: new Date(2021, 7, 1, 18, 30),
+              time: new Date(2021, 8, 8, 18, 30),
               isFree: true,
             },
             {
               id: 21,
-              time: new Date(2021, 7, 1, 18, 30),
+              time: new Date(2021, 8, 8, 18, 30),
               isFree: true,
             },
           ],

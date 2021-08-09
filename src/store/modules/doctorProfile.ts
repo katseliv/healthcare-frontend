@@ -37,12 +37,12 @@ const doctorProfile = {
 					{
 						id: 2,
 						time: "2021-08-09T16:40:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 3,
 						time: "2021-08-09T17:45:00",
-						isFree: true
+						isFree: false
 					}
 				]
 			},
@@ -59,12 +59,12 @@ const doctorProfile = {
 					{
 						id: 5,
 						time: "2021-08-10T17:50:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 6,
 						time: "2021-08-10T18:30:00",
-						isFree: true
+						isFree: false
 					}
 				]
 			},
@@ -76,17 +76,17 @@ const doctorProfile = {
 					{
 						id: 7,
 						time: "2021-08-11T17:30:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 8,
 						time: "2021-08-11T18:00:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 9,
 						time: "2021-08-11T18:30:00",
-						isFree: true
+						isFree: false
 					}
 				]
 			},
@@ -108,7 +108,7 @@ const doctorProfile = {
 					{
 						id: 12,
 						time: "2021-08-12T18:30:00",
-						isFree: true
+						isFree: false
 					}
 				]
 			},
@@ -120,7 +120,7 @@ const doctorProfile = {
 					{
 						id: 13,
 						time: "2021-08-13T17:30:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 14,
@@ -142,12 +142,12 @@ const doctorProfile = {
 					{
 						id: 16,
 						time: "2021-08-14T17:30:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 17,
 						time: "2021-08-14T18:00:00",
-						isFree: true
+						isFree: false
 					},
 					{
 						id: 18,
