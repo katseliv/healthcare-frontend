@@ -176,20 +176,6 @@ export default {
             speciality
           );
         }
-
-        // EventService.postDoctor(this.registration).then(() => {
-        //   await EventService.getDoctors()
-        //     .then((response) => {
-        //       return response.data.find((item) => {
-        //         item.login === this.registration.login;
-        //       }).id;
-        //     })
-        //     .then((response) => {
-        //       this.currentSpecialities.forEach((element) => {
-        //         await EventService.postPatient(response, element);
-        //       });
-        //     });
-        // });
       }
     },
     addSpeciality() {

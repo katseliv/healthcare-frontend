@@ -53,7 +53,7 @@ import Report from "./Reports.vue";
 
 export default defineComponent({
   created() {
-    this.updateDoctorProfile(2);
+    this.updateDoctorProfile(this.loginModule.id);
   },
   data() {
     return {
@@ -70,6 +70,7 @@ export default defineComponent({
   computed: {
     ...mapState(["doctorProfile"]),
     ...mapGetters(["doctorName"]),
+    ...mapState(["loginModule"]),
   },
   methods: {
     ...mapActions(["updateDoctorProfile"]),

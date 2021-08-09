@@ -27,15 +27,31 @@
   </el-table>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from "vue";
-import { mapState } from "vuex";
-import EventService from "../../api/EventService";
+<script>
+import EventService from "@/api/EventService";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   props: ["doctorProfile"],
+  data() {
+    return {
+      schedule: [],
+    };
+  },
+  created() {
+    this.cutWeekends();
+  },
+  // mounted() {
+  //   setTimeout(
+  //     () =>
+  //       EventService.getSchedule(this.doctorProfile.id).then((response) => {
+  //         this.schedule = response.data;
+  //       }),
+  //     2000
+  //   );
+  // },
   methods: {
-    tableRowClassName({ row }: any) {
+    tableRowClassName({ row }) {
       let className = "";
       if (row.isFree === true) {
         className = "success-row";
@@ -47,23 +63,20 @@ export default defineComponent({
       }
       return className;
     },
-    isExpired(time: string) {
+    isExpired(time) {
       let now = new Date();
       let date = new Date(time);
       if (now > date) return true;
       return false;
     },
     cutWeekends() {
-      this.schedule = this.doctorProfile.schedule;
+      this.schedule = [...this.doctorProfile.schedule];
       for (
         let weekend = this.doctorProfile.weekends.length - 1;
         weekend >= 0;
         weekend--
       ) {
-        this.schedule.splice(
-          (this.doctorProfile.weekends[weekend] as any) - 1,
-          1
-        );
+        this.schedule.splice(this.doctorProfile.weekends[weekend] - 1, 1);
       }
     },
     // deleteDay(dayId: number) {
@@ -75,17 +88,7 @@ export default defineComponent({
     //     .catch((error) => console.log(error));
     // },
   },
-  created() {
-    this.cutWeekends();
-  },
-  data() {
-    return {
-      schedule: [],
-    };
-  },
-  computed: {
-    //...mapState(["doctorProfile"]),
-  },
+  computed: {},
 });
 </script>
 

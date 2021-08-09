@@ -16,13 +16,13 @@
         <Visits />
       </el-tab-pane>
       <el-tab-pane class="profile__tab" label="Diseases" name="second"
-        ><Diseases
+        ><Diseases :patientId="loginModule.id"
       /></el-tab-pane>
       <el-tab-pane class="profile__tab" label="Allergies" name="third">
-        <Allergies />
+        <Allergies :patientId="loginModule.id" />
       </el-tab-pane>
       <el-tab-pane class="profile__tab" label="Settings" name="fourth">
-        <PatientProfileSettings />
+        <PatientProfileSettings :patientProfile="patientProfile" />
       </el-tab-pane>
     </el-tabs>
   </div>

@@ -1,7 +1,7 @@
 import EntityModel from '@/models/entity.model';
 
 interface Allergy extends EntityModel {
-	description: string
+	name: string
 }
 
 export default Allergy

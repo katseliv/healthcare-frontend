@@ -3,32 +3,34 @@
     <el-table-column type="index" label="№" min-width="50"> </el-table-column>
     <el-table-column prop="name" label="name" min-width="150">
     </el-table-column>
-    <el-table-column prop="start" label="start" min-width="100">
+    <el-table-column prop="start_date" label="start" min-width="100">
     </el-table-column>
-    <el-table-column prop="end" label="end" min-width="100"> </el-table-column>
+    <el-table-column prop="end_date" label="end" min-width="100">
+    </el-table-column>
   </el-table>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import EventService from "@/api/EventService";
 import Disease from "@/models/disease.model";
 
 export default defineComponent({
+  props: {
+    patientId: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
-      diseases: [
-        {
-          name: "Вич",
-          start: "01.02.2021",
-          end: "03.03.2021",
-        },
-        {
-          name: "Гепатит",
-          start: "15.07.1990",
-          end: "20.03.2021",
-        },
-      ] as Disease[],
+      diseases: [] as Disease[],
     };
+  },
+  created() {
+    EventService.getPatientDiseases(this.patientId).then((response) => {
+      this.diseases = response.data;
+    });
   },
 });
 </script>

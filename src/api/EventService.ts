@@ -1,8 +1,13 @@
 import axios from "axios"
 
 const apiClient = axios.create({
+<<<<<<< HEAD
     baseURL: 'http://localhost:8080/api',
     // baseURL: 'http://servachok2021.ddns.net:8081/api',
+=======
+    baseURL: 'http://localhost:8081/api',
+    //baseURL: 'http://servachok2021.ddns.net:8081/api',
+>>>>>>> d57cc1e33230825acbc69d0605775c858a07d2bc
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -11,15 +16,11 @@ const apiClient = axios.create({
 })
 
 const EventService = {
-
     login(formData: any) {
         const data = new FormData();
         data.set('username', formData.username);
         data.set('password', formData.password);
         return apiClient.post('/user/login', data);
-    },
-    getSchedule() {
-        return apiClient.get('/schedule');
     },
     deleteSlot(dayId: number) {
         return apiClient.delete(`/schedule/${dayId}`);
@@ -29,6 +30,12 @@ const EventService = {
     },
     putPatientById(id: number, patientData: any) {
         return apiClient.put(`/patients/${id}`, patientData)
+    },
+    getPatientDiseases(id: number) {
+        return apiClient.get(`/patients/${id}/diseases`)
+    },
+    getPatientAllergies(id: number) {
+        return apiClient.get(`/patients/${id}/allergies`)
     },
     getVisitsByPatientId(patientId: number) {
         return apiClient.get(`/appointments?patientId=${patientId}`)

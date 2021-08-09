@@ -24,11 +24,6 @@ const adminProfile = {
 					console.log(error);
 				})
 		},
-	},
-	getters: {
-		adminName(state: any) {
-			return `${state.first_name} ${state.mid_name} ${state.last_name}`;
-		}
 	}
 
 }
