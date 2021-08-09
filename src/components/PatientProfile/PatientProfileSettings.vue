@@ -21,7 +21,7 @@
       </el-radio-group>
     </el-form-item>
     <el-form-item label="Изменить возраст">
-      <el-input type="number" v-model="settings.age"></el-input>
+      <el-input type="date" v-model="settings.birthdate"></el-input>
     </el-form-item>
     <el-form-item label="Имя">
       <el-input v-model="settings.first_name"></el-input>
@@ -38,6 +38,12 @@
       type="error"
       :closable="false"
     />
+    <el-alert
+      v-if="notEnoughSymbols"
+      title="Пароль должен содержать не менее восьми символов"
+      type="error"
+      :closable="false"
+    />
     <el-form-item label="Изменить пароль">
       <el-input type="password" v-model="settings.password"></el-input>
     </el-form-item>
@@ -48,6 +54,7 @@
       <el-button @click="submit(settings)" type="primary"
         >Подтвердить</el-button
       >
+      <el-alert v-if="success" title="Успешно изменено" type="success" />
     </el-form-item>
   </el-form>
 </template>
@@ -68,19 +75,27 @@ export default defineComponent({
     return {
       settings: {} as PatientSettings,
       wrongPassword: false,
+      notEnoughSymbols: false,
+      success: false,
     };
   },
   methods: {
     submit(settings: any) {
-      if (settings.password === settings.passwordConfirm) {
+      if (settings.password !== settings.passwordConfirm) {
+        this.wrongPassword = true;
+      } else if (settings.password.length < 8) {
+        this.notEnoughSymbols = true;
+      } else {
         this.wrongPassword = false;
+        this.notEnoughSymbols = false;
         EventService.putPatientById(this.patientProfile.id, settings).then(
           () => {
-            console.log("success");
+            this.success = true;
+            setTimeout(() => {
+              this.success = false;
+            }, 5000);
           }
         );
-      } else {
-        this.wrongPassword = true;
       }
     },
   },
