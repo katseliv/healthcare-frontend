@@ -4,58 +4,67 @@
       <History :oldVisits="oldVisits" />
     </el-tab-pane>
     <el-tab-pane label="Future" name="second">
-      <Future :newVisits="newVisits" @update-visits="getVisits" />
+      <Future :newVisits="newVisits" />
     </el-tab-pane>
   </el-tabs>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import Future from "./Future.vue";
 import History from "./History.vue";
-import EventService from "@/api/EventService";
-import Doctor from "@/models/doctor.model";
-import Visit from "@/models/visit.model";
 
 export default defineComponent({
   data() {
     return {
       activeName: "first",
-      oldVisits: [],
-      newVisits: [],
+      appointments: [
+        {
+          id: 0,
+          doctorName: "Иванов И.И.",
+          result: "",
+          recipe: "",
+          dateAndTime: "11.09.2021 18:30",
+          status: "new",
+        },
+        {
+          id: 1,
+          doctorName: "Сидоров В.К.",
+          result: "Простуда",
+          recipe: "Аспирин 7 дней 1 таблетка в день",
+          dateAndTime: "05.09.2021 15:30",
+          status: "old",
+        },
+        {
+          id: 2,
+          doctorName: "Фёдоров Д.С.",
+          result: "Травма колена",
+          recipe: "Тейпинг",
+          dateAndTime: "06.09.2021 17:30",
+          status: "old",
+        },
+        {
+          id: 3,
+          doctorName: "Петров Д.Б.",
+          result: "string",
+          recipe: "string",
+          dateAndTime: "13.09.2021 16:00",
+          status: "new",
+        },
+      ],
     };
   },
   components: {
     History,
     Future,
   },
-  methods: {
-    mock() {
-      console.log("Работает");
+  computed: {
+    newVisits() {
+      return this.appointments.filter((visit) => visit.status === "new");
     },
-    async getVisits() {
-      const visits = await EventService.getVisitsByPatientId(1)
-        .then((response) => {
-          return response.data;
-        })
-        .catch((error) => {
-          return console.log(error);
-        });
-      await visits.forEach(async (visit: any) => {
-        visit.doctorName = await EventService.getDoctorById(visit.doctorId)
-          .then((response) => {
-            return response.data.fullName;
-          })
-          .catch((error) => {
-            return console.log(error);
-          });
-      });
-      this.oldVisits = visits.filter((visit: any) => visit.status === "old");
-      this.newVisits = visits.filter((visit: any) => visit.status === "new");
+    oldVisits() {
+      return this.appointments.filter((visit) => visit.status === "old");
     },
-  },
-  created() {
-    this.getVisits();
   },
 });
 </script>
