@@ -1,4 +1,4 @@
-import User from "./User.model";
+import User from "@/models/user.model";
 
 interface PatientSettings extends User {
 	sex: string,

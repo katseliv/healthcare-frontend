@@ -1,4 +1,4 @@
-import User from "./user.model";
+import User from "@/models/user.model";
 
 interface Doctor extends User {
 	first_name: string,
