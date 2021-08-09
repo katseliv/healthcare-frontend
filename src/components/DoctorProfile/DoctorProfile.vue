@@ -19,8 +19,8 @@
       </p>
       <h5>Специальности:</h5>
       <p v-for="specitality in specialities" :key="specitality.id">
-        {{ specitality.id }} {{ specitality.receive_date }}
-        {{ specitality.name }}
+        {{ specitality.name }} c
+        {{ specitality.receive_date }}
       </p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
@@ -67,16 +67,12 @@ export default defineComponent({
         return response.data;
       }
     );
-    console.log(allSpecialities);
-    // this.specialities.forEach((element, i) => {
-    //   console.log(element);
-    //   const currentSpeciality = allSpecialities.find((item: any) => {
-    //     item.id === element.id;
-    //   });
-    //   if (currentSpeciality != undefined) {
-    //     this.specialities[i].name = currentSpeciality.name;
-    //   }
-    // });
+
+    for (let i = 0; i < this.specialities.length; i++) {
+      this.specialities[i].name = allSpecialities.find(
+        (item: any) => item.id == this.specialities[i].id
+      ).name;
+    }
   },
   data() {
     return {
