@@ -1,13 +1,8 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-<<<<<<< HEAD
-    baseURL: 'http://localhost:8080/api',
-    // baseURL: 'http://servachok2021.ddns.net:8081/api',
-=======
-    baseURL: 'http://localhost:8081/api',
-    //baseURL: 'http://servachok2021.ddns.net:8081/api',
->>>>>>> d57cc1e33230825acbc69d0605775c858a07d2bc
+    // baseURL: 'http://localhost:8080/api',
+    baseURL: 'http://servachok2021.ddns.net:8081/api',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
