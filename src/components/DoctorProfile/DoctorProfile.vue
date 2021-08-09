@@ -17,10 +17,11 @@
         >
         </el-rate>
       </p>
-      <!-- <h5>Специальности:</h5>
-      <p v-for="specitality in doctorProfile.specialties" :key="specitality">
-        {{ specitality }}
-      </p> -->
+      <h5>Специальности:</h5>
+      <p v-for="specitality in specialities" :key="specitality.id">
+        {{ specitality.id }} {{ specitality.receive_date }}
+        {{ specitality.name }}
+      </p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
       <el-tab-pane class="profile__tab flex" label="Расписание" name="first">
@@ -50,16 +51,39 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import Schedule from "./Schedule.vue";
 import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
+import EventService from "@/api/EventService";
+import Speciality from "@/models/speciality.model";
 
 export default defineComponent({
-  created() {
+  async created() {
     this.updateDoctorProfile(this.loginModule.id);
+    this.specialities = await EventService.getSpecialitiesByDoctorId(
+      this.loginModule.id
+    ).then((responce) => {
+      return responce.data;
+    });
+    const allSpecialities = await EventService.getSpecialities().then(
+      (response) => {
+        return response.data;
+      }
+    );
+    console.log(allSpecialities);
+    // this.specialities.forEach((element, i) => {
+    //   console.log(element);
+    //   const currentSpeciality = allSpecialities.find((item: any) => {
+    //     item.id === element.id;
+    //   });
+    //   if (currentSpeciality != undefined) {
+    //     this.specialities[i].name = currentSpeciality.name;
+    //   }
+    // });
   },
   data() {
     return {
       activeName: "first",
       src: require("../../assets/img/patient-avatar.png"),
       fit: "cover",
+      specialities: [] as Speciality[],
     };
   },
   components: {
