@@ -36,4 +36,16 @@ h1 {
 h2 {
   font-style: italic;
 }
+@media (max-width: 768px) {
+  .main-screen {
+    justify-content: flex-start;
+  }
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 15px;
+  }
+}
 </style>

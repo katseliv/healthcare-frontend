@@ -31,3 +31,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.main-menu {
+  overflow: auto;
+  display: flex;
+}
+</style>
