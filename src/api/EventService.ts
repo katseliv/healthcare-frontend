@@ -1,8 +1,8 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:8081/api',
-    //baseURL: 'http://servachok2021.ddns.net:8081/api',
+    // baseURL: 'http://localhost:8080/api',
+    baseURL: 'http://servachok2021.ddns.net:8081/api',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -39,6 +39,9 @@ const EventService = {
         console.log(id);
         return apiClient.delete(`/appointments/${id}`)
     },
+    getDoctors() {
+        return apiClient.get(`/doctors`);
+    },
     getDoctorById(id: number) {
         return apiClient.get(`/doctors/${id}`)
     },
@@ -54,8 +57,12 @@ const EventService = {
     postPatient(data: any) {
         return apiClient.post('/patients', { ...data })
     },
-    // getSchedule(id: number, data: any) {
-    //     return apiClient.get(`/doctors/${id}/timerecord/schedule`, data)
-    // }
+    postSpecialityByDoctorId(doctorId: number, specialityData: any) {
+        return apiClient.post(`/doctors/${doctorId}/specialities`, specialityData)
+    },
+    getSpecialities() {
+        return apiClient.get('/specialities')
+    }
+
 }
 export default EventService

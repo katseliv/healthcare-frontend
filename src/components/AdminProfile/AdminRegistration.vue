@@ -30,25 +30,30 @@
         <el-input v-model="registration.last_name"></el-input>
       </el-form-item>
 
-      <!-- <h4>Специальности</h4>
       <el-form-item
-        v-for="(speciality, i) in registration.doctorInputs.specialities"
-        v-bind:key="speciality.id"
-        type="text"
-        :label="'Специальность ' + (i + 1)"
+        v-for="(speciality, i) in currentSpecialities"
+        :key="speciality"
+        :label="'Специальность ' + ++i"
         prop="speciality"
       >
-        <el-input
-          type="text"
-          v-model="registration.doctorInputs.specialities[i]"
-        ></el-input>
+        <el-input type="date" v-model="speciality.receive_date"> </el-input>
+
+        <el-select v-model="speciality.id" placeholder="Специальность">
+          <el-option
+            v-for="spec in allSpecialities"
+            :key="spec.id"
+            :value="spec.id"
+            :label="spec.name"
+          ></el-option>
+        </el-select>
       </el-form-item>
+
       <el-form-item>
-        <el-button type="primary" @click="addSpeciality">+</el-button>
+        <el-button-group>
+          <el-button type="primary" @click="addSpeciality">+</el-button>
+          <el-button type="primary" @click="removeSpeciality">-</el-button>
+        </el-button-group>
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="removeSpeciality">-</el-button>
-      </el-form-item> -->
     </div>
 
     <el-form-item label="Тип пользователя" prop="userType">
@@ -70,7 +75,29 @@ export default {
   data() {
     return {
       userType: "admin",
-      registration: {},
+      registration: {
+        rating: 0,
+      },
+      allSpecialities: [
+        {
+          name: "Терапевт",
+          id: 1,
+        },
+        {
+          name: "Смерть",
+          id: 2,
+        },
+      ],
+      currentSpecialities: [
+        {
+          id: 0,
+          receive_date: "",
+        },
+        {
+          id: 1,
+          receive_date: "",
+        },
+      ],
       rules: {
         login: [
           {
@@ -117,25 +144,49 @@ export default {
       },
     };
   },
+  async created() {
+    this.allSpecialities = await EventService.getSpecialities().then(
+      (response) => {
+        return response.data;
+      }
+    );
+  },
   methods: {
-    onSubmit() {
+    async onSubmit() {
+      const regData = this.registration;
       if (this.userType === "admin") {
         const data = {
-          login: this.registration.login,
-          password: this.registration.password,
-          email: this.registration.email,
+          login: regData.login,
+          password: regData.password,
+          email: regData.email,
         };
         EventService.postAdmin(data);
       } else if (this.userType === "doctor") {
-        EventService.postDoctor(this.registration);
+        await EventService.postDoctor(regData);
+        const doctors = await EventService.getDoctors().then((response) => {
+          return response.data;
+        });
+        const currentDoctor = await doctors.find(
+          (item) => item.login === regData.login
+        );
+        for await (let speciality of this.currentSpecialities) {
+          console.log(speciality);
+          await EventService.postSpecialityByDoctorId(
+            currentDoctor.id,
+            speciality
+          );
+        }
       }
     },
-    // addSpeciality() {
-    //   this.registration.doctorInputs.specialities.push("");
-    // },
-    // removeSpeciality() {
-    //   this.registration.doctorInputs.specialities.pop("");
-    // },
+    addSpeciality() {
+      this.currentSpecialities.push({
+        id: 0,
+        receive_date: "",
+      });
+    },
+    removeSpeciality() {
+      this.currentSpecialities.pop("");
+    },
   },
 };
 </script>
@@ -149,6 +200,9 @@ export default {
 @media (max-width: 576px) {
   .form {
     padding: 0 10px;
+  }
+  .el-select .el-input {
+    width: 100px;
   }
 }
 </style>

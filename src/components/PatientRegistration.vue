@@ -25,8 +25,12 @@
         <el-radio label="F">Женский</el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="Возраст" prop="age">
-      <el-input type="number" v-model="patientRegistration.age"></el-input>
+    <el-form-item label="Дата рождения" prop="birthdate">
+      <el-input
+        type="date"
+        placeholder="YYYY-MM-DD"
+        v-model="patientRegistration.birthdate"
+      ></el-input>
     </el-form-item>
     <el-form-item label="Login" prop="login">
       <el-input type="email" v-model="patientRegistration.login"></el-input>
@@ -56,6 +60,7 @@
 import { defineComponent } from "vue";
 import PatientReg from "@/models/patientReg.model";
 import EventService from "@/api/EventService";
+import router from "@/router";
 
 export default defineComponent({
   data() {
@@ -104,10 +109,10 @@ export default defineComponent({
             trigger: "blur",
           },
         ],
-        age: [
+        birthdate: [
           {
             required: true,
-            message: "Введите ваш возраст",
+            message: "Дата рождения",
             trigger: "blur",
           },
         ],
@@ -129,8 +134,11 @@ export default defineComponent({
     };
   },
   methods: {
-    onSubmit() {
-      EventService.postPatient(this.patientRegistration);
+    async onSubmit() {
+      await EventService.postPatient(this.patientRegistration);
+      return router.push("/authorization/login").catch((error) => {
+        console.log(error.response.body);
+      });
     },
   },
 });
