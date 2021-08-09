@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import EventService from "@/api/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -44,7 +43,7 @@ export default defineComponent({
   // mounted() {
   //   setTimeout(
   //     () =>
-  //       EventService.getSchedule(this.doctorProfile.id).then((response) => {
+  //       doctorAPI.getSchedule(this.doctorProfile.id).then((response) => {
   //         this.schedule = response.data;
   //       }),
   //     2000

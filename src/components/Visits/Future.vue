@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import EventService from "@/api/EventService";
 //import Doctor from "@/models/doctor.model";
 
 export default defineComponent({
@@ -33,9 +32,6 @@ export default defineComponent({
 
   methods: {
     deleteVisit(id: number) {
-      EventService.deleteVisitById(id).catch((error) => {
-        console.log(error);
-      });
       this.$emit("updateVisits");
     },
   },

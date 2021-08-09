@@ -59,7 +59,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import PatientReg from "@/models/patientReg.model";
-import EventService from "@/api/EventService";
+import { patientAPI } from "@/api/EventService";
 import router from "@/router";
 
 export default defineComponent({
@@ -135,7 +135,7 @@ export default defineComponent({
   },
   methods: {
     async onSubmit() {
-      await EventService.postPatient(this.patientRegistration);
+      await patientAPI.postPatient(this.patientRegistration);
       return router.push("/authorization/login").catch((error) => {
         console.log(error.response.body);
       });

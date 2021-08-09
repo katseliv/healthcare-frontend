@@ -1,5 +1,5 @@
+import { patientAPI } from './../../api/EventService';
 import Patient from '@/models/patient.model'
-import EventService from '@/api/EventService'
 
 const patientProfile = {
 	state: () => ({
@@ -30,7 +30,7 @@ const patientProfile = {
 	},
 	actions: {
 		updatePatientProfile(context: any, id: number) {
-			EventService.getPatientById(id)
+			patientAPI.getPatientById(id)
 				.then((response) => {
 					context.commit('UPDATE_PATIENT_PROFILE', response.data)
 				})

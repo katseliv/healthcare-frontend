@@ -1,4 +1,4 @@
-import EventService from '@/api/EventService';
+import { doctorAPI } from './../../api/EventService';
 import Doctor from '@/models/doctor.model';
 
 const doctorProfile = {
@@ -197,8 +197,7 @@ const doctorProfile = {
 	},
 	actions: {
 		updateDoctorProfile(context: any, id: number) {
-			//console.log(context);
-			EventService.getDoctorById(id)
+			doctorAPI.getDoctorById(id)
 				.then((response: any) => {
 					context.commit('UPDATE_DOCTOR_PROFILE', response.data);
 				})

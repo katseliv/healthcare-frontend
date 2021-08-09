@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Allergy from "@/models/allergy.model";
-import EventService from "@/api/EventService";
+import { patientAPI } from "@/api/EventService";
 
 export default defineComponent({
   props: {
@@ -24,7 +24,7 @@ export default defineComponent({
     };
   },
   created() {
-    EventService.getPatientAllergies(this.patientId).then((response) => {
+    patientAPI.getPatientAllergies(this.patientId).then((response) => {
       this.allergies = response.data;
     });
   },

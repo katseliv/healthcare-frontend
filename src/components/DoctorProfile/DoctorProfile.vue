@@ -51,22 +51,22 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import Schedule from "./Schedule.vue";
 import ScheduleSettings from "./ScheduleSettings.vue";
 import Report from "./Reports.vue";
-import EventService from "@/api/EventService";
+import { doctorAPI } from "@/api/EventService";
 import Speciality from "@/models/speciality.model";
 
 export default defineComponent({
   async created() {
     this.updateDoctorProfile(this.loginModule.id);
-    this.specialities = await EventService.getSpecialitiesByDoctorId(
-      this.loginModule.id
-    ).then((responce) => {
-      return responce.data;
-    });
-    const allSpecialities = await EventService.getSpecialities().then(
-      (response) => {
+    this.specialities = await doctorAPI
+      .getSpecialitiesByDoctorId(this.loginModule.id)
+      .then((responce) => {
+        return responce.data;
+      });
+    const allSpecialities = await doctorAPI
+      .getSpecialities()
+      .then((response) => {
         return response.data;
-      }
-    );
+      });
 
     for (let i = 0; i < this.specialities.length; i++) {
       this.specialities[i].name = allSpecialities.find(

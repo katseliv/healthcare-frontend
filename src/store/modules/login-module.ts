@@ -1,4 +1,4 @@
-import EventService from '@/api/EventService';
+import { authAPI } from './../../api/EventService';
 import router from '@/router';
 
 const loginModule = {
@@ -34,7 +34,7 @@ const loginModule = {
   actions: {
     login(context: any) {
       context.commit('SET_ERROR', '');
-      EventService.login(context.state.formData)
+      authAPI.login(context.state.formData)
         .then((response: any) => {
           context.commit('CLEAR_FORM');
           context.commit('SET_USER_DATA', response.data);

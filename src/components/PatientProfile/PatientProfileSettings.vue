@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import EventService from "@/api/EventService";
+import { patientAPI } from "@/api/EventService";
 import PatientSettings from "@/models/pateinetSettings.model";
 
 export default defineComponent({
@@ -88,14 +88,12 @@ export default defineComponent({
       } else {
         this.wrongPassword = false;
         this.notEnoughSymbols = false;
-        EventService.putPatientById(this.patientProfile.id, settings).then(
-          () => {
-            this.success = true;
-            setTimeout(() => {
-              this.success = false;
-            }, 5000);
-          }
-        );
+        patientAPI.putPatientById(this.patientProfile.id, settings).then(() => {
+          this.success = true;
+          setTimeout(() => {
+            this.success = false;
+          }, 5000);
+        });
       }
     },
   },

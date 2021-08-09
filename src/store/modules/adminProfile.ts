@@ -1,4 +1,4 @@
-import EventService from '@/api/EventService';
+import { adminAPI } from './../../api/EventService';
 import Admin from '@/models/admin.model';
 
 const adminProfile = {
@@ -16,7 +16,7 @@ const adminProfile = {
 	},
 	actions: {
 		updateAdminProfile(context: any, id: number) {
-			EventService.getAdminById(id)
+			adminAPI.getAdminById(id)
 				.then((response: any) => {
 					context.commit('UPDATE_ADMIN_PROFILE', response.data);
 				})

@@ -69,8 +69,7 @@
 </template>
 
 <script>
-import EventService from "@/api/EventService";
-import AdminReg from "@/models/adminReg.model";
+import { adminAPI, doctorAPI } from "@/api/EventService";
 export default {
   data() {
     return {
@@ -145,11 +144,11 @@ export default {
     };
   },
   async created() {
-    this.allSpecialities = await EventService.getSpecialities().then(
-      (response) => {
+    this.allSpecialities = await doctorAPI
+      .getSpecialities()
+      .then((response) => {
         return response.data;
-      }
-    );
+      });
   },
   methods: {
     async onSubmit() {
@@ -160,10 +159,10 @@ export default {
           password: regData.password,
           email: regData.email,
         };
-        EventService.postAdmin(data);
+        adminAPI.postAdmin(data);
       } else if (this.userType === "doctor") {
-        await EventService.postDoctor(regData);
-        const doctors = await EventService.getDoctors().then((response) => {
+        await adminAPI.postDoctor(regData);
+        const doctors = await doctorAPI.getDoctors().then((response) => {
           return response.data;
         });
         const currentDoctor = await doctors.find(
@@ -171,7 +170,7 @@ export default {
         );
         for await (let speciality of this.currentSpecialities) {
           console.log(speciality);
-          await EventService.postSpecialityByDoctorId(
+          await doctorAPI.postSpecialityByDoctorId(
             currentDoctor.id,
             speciality
           );

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import EventService from "@/api/EventService";
+import { patientAPI } from "@/api/EventService";
 import Disease from "@/models/disease.model";
 
 export default defineComponent({
@@ -28,7 +28,7 @@ export default defineComponent({
     };
   },
   created() {
-    EventService.getPatientDiseases(this.patientId).then((response) => {
+    patientAPI.getPatientDiseases(this.patientId).then((response) => {
       this.diseases = response.data;
     });
   },

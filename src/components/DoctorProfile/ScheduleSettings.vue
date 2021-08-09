@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
 const weekDays = [
   "Понедельник",
   "Вторник",
