@@ -37,6 +37,9 @@ const EventService = {
         console.log(id);
         return apiClient.delete(`/appointments/${id}`)
     },
+    getDoctors() {
+        return apiClient.get(`/doctors`);
+    },
     getDoctorById(id: number) {
         return apiClient.get(`/doctors/${id}`)
     },
@@ -51,6 +54,9 @@ const EventService = {
     },
     postPatient(data: any) {
         return apiClient.post('/patients', { ...data })
+    },
+    postSpecialityByDoctorId(doctorId: number, specialityData: any) {
+        return apiClient.post(`/doctors/${doctorId}/specialities`, specialityData)
     },
     getSpecialities() {
         return apiClient.get('/specialities')

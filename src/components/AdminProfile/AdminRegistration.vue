@@ -54,26 +54,6 @@
           <el-button type="primary" @click="removeSpeciality">-</el-button>
         </el-button-group>
       </el-form-item>
-
-      <!-- <h4>Специальности</h4>
-      <el-form-item
-        v-for="(speciality, i) in registration.doctorInputs.specialities"
-        v-bind:key="speciality.id"
-        type="text"
-        :label="'Специальность ' + (i + 1)"
-        prop="speciality"
-      >
-        <el-input
-          type="text"
-          v-model="registration.doctorInputs.specialities[i]"
-        ></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="addSpeciality">+</el-button>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="removeSpeciality">-</el-button>
-      </el-form-item> -->
     </div>
 
     <el-form-item label="Тип пользователя" prop="userType">
@@ -170,20 +150,46 @@ export default {
         return response.data;
       }
     );
-    console.log(this.allSpecialities);
   },
   methods: {
-    onSubmit() {
-      console.log(this.currentSpecialities);
+    async onSubmit() {
+      const regData = this.registration;
       if (this.userType === "admin") {
         const data = {
-          login: this.registration.login,
-          password: this.registration.password,
-          email: this.registration.email,
+          login: regData.login,
+          password: regData.password,
+          email: regData.email,
         };
         EventService.postAdmin(data);
       } else if (this.userType === "doctor") {
-        EventService.postDoctor(this.registration);
+        await EventService.postDoctor(regData);
+        const doctors = await EventService.getDoctors().then((response) => {
+          return response.data;
+        });
+        const currentDoctor = await doctors.find(
+          (item) => item.login === regData.login
+        );
+        for await (let speciality of this.currentSpecialities) {
+          console.log(speciality);
+          await EventService.postSpecialityByDoctorId(
+            currentDoctor.id,
+            speciality
+          );
+        }
+
+        // EventService.postDoctor(this.registration).then(() => {
+        //   await EventService.getDoctors()
+        //     .then((response) => {
+        //       return response.data.find((item) => {
+        //         item.login === this.registration.login;
+        //       }).id;
+        //     })
+        //     .then((response) => {
+        //       this.currentSpecialities.forEach((element) => {
+        //         await EventService.postPatient(response, element);
+        //       });
+        //     });
+        // });
       }
     },
     addSpeciality() {
