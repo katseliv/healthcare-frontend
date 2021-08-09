@@ -25,13 +25,6 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-checkbox
-        @click="setRememberMe"
-        v-model="loginModule.formData.rememberMe"
-        >Запомнить меня</el-checkbox
-      >
-    </el-form-item>
-    <el-form-item>
       <el-button type="primary" @click="onSubmit">Войти</el-button>
     </el-form-item>
     <el-alert

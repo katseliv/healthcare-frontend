@@ -1,14 +1,22 @@
 <template>
-  <el-form label-width="120px" label-position="left" size="medium" class="form">
+  <el-form
+    label-width="120px"
+    ref="visitForm"
+    :model="visitForm"
+    label-position="left"
+    size="medium"
+    class="form"
+  >
     <h2>Создание новой записи</h2>
-    <el-form-item
-      ref="patientRegistration"
-      :model="patientRegistration"
-      label="Специальность"
-      prop="specialty"
-      required
-    >
-      <el-input></el-input>
+    <el-form-item label="Специальность" prop="specialty" required>
+      <el-select v-model="chosenSpec" placeholder="Специальность">
+        <el-option
+          v-for="spec in specialities"
+          :key="spec.id"
+          :value="spec.id"
+          :label="spec.name"
+        ></el-option>
+      </el-select>
     </el-form-item>
     <el-form-item label="Дата и время" required>
       <el-col :span="11">
@@ -32,11 +40,11 @@
       </el-col>
     </el-form-item>
     <el-form-item label="Врач" prop="doctors">
-      <el-select v-model="visitForm.doctors" placeholder="Выберите врача">
+      <el-select v-model="chosenDoctor" placeholder="Выберите врача">
         <el-option
-          v-for="doctor in visitForm.doctors"
-          :key="doctor"
-          :label="`${doctor}`"
+          v-for="doctor in doctors"
+          :key="doctor.id"
+          :label="`${doctor.first_name} ${doctor.mid_name} ${doctor.last_name}`"
           :value="doctor"
         ></el-option>
       </el-select>
@@ -51,6 +59,7 @@
 </template>
 
 <script>
+import EventService from "@/api/EventService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -59,7 +68,23 @@ export default defineComponent({
       visitForm: {
         doctors: ["Иванов И.И.", "Петров Д.В.", "Чубенко В.Д."],
       },
+      specialities: [],
+      doctors: [],
+      chosenSpec: "",
+      chosenDoctor: "",
     };
+  },
+  async created() {
+    const specialities = await EventService.getSpecialities().then(
+      (response) => {
+        return response.data;
+      }
+    );
+    this.specialities = specialities;
+    const doctors = await EventService.getDoctors().then((response) => {
+      return response.data;
+    });
+    this.doctors = doctors;
   },
   methods: {
     onSubmit() {
