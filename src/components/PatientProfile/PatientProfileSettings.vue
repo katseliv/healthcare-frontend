@@ -60,7 +60,9 @@ import PatientSettings from "@/models/pateinetSettings.model";
 export default defineComponent({
   props: ["patientProfile"],
   created() {
-    this.settings = { ...this.patientProfile };
+    setTimeout(() => {
+      this.settings = { ...this.patientProfile };
+    }, 1000);
   },
   data() {
     return {
@@ -72,7 +74,7 @@ export default defineComponent({
     submit(settings: any) {
       if (settings.password === settings.passwordConfirm) {
         this.wrongPassword = false;
-        EventService.patchPatientById(this.patientProfile.id, settings).then(
+        EventService.putPatientById(this.patientProfile.id, settings).then(
           () => {
             console.log("success");
           }
