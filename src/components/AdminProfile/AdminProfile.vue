@@ -8,7 +8,7 @@
       <p><span>Email:</span> {{ adminProfile.email }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
-      <el-tab-pane class="profile__tab" label="Registration" name="first">
+      <el-tab-pane class="profile__tab" label="Регистрация" name="first">
         <AdminRegistration />
       </el-tab-pane>
     </el-tabs>

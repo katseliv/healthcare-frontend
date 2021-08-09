@@ -2,8 +2,8 @@
   <el-table class="table" :data="newVisits" style="width: 100%">
     <el-table-column type="index" label="№"> </el-table-column>
     <el-table-column prop="doctorName" label="Имя врача"> </el-table-column>
-    <el-table-column prop="dateAndTime" label="date"> </el-table-column>
-    <el-table-column label="actions">
+    <el-table-column prop="dateAndTime" label="Дата"> </el-table-column>
+    <el-table-column label="Действия">
       <template #default="buttons">
         <el-button
           icon="el-icon-delete"

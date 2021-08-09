@@ -1,7 +1,7 @@
 <template>
   <el-table :data="allergies" style="width: 100%">
     <el-table-column type="index" label="№" min-width="50"> </el-table-column>
-    <el-table-column prop="name" label="Name" min-width="200">
+    <el-table-column prop="name" label="Название" min-width="200">
     </el-table-column>
   </el-table>
 </template>

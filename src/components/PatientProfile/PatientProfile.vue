@@ -7,21 +7,21 @@
       <h4>
         {{ patientName }}
       </h4>
-      <p><span>Sex:</span> {{ patientProfile.sex }}</p>
+      <p><span>Пол:</span> {{ patientProfile.sex }}</p>
       <p><span>Email:</span> {{ patientProfile.email }}</p>
-      <p><span>Age:</span> {{ patientProfile.age }}</p>
+      <p><span>Возраст:</span> {{ patientProfile.age }}</p>
     </div>
     <el-tabs class="profile__tabs" v-model="activeName">
-      <el-tab-pane class="profile__tab" label="Visits" name="first">
+      <el-tab-pane class="profile__tab" label="Визиты" name="first">
         <Visits />
       </el-tab-pane>
-      <el-tab-pane class="profile__tab" label="Diseases" name="second"
+      <el-tab-pane class="profile__tab" label="Болезни" name="second"
         ><Diseases :patientId="loginModule.id"
       /></el-tab-pane>
-      <el-tab-pane class="profile__tab" label="Allergies" name="third">
+      <el-tab-pane class="profile__tab" label="Аллергии" name="third">
         <Allergies :patientId="loginModule.id" />
       </el-tab-pane>
-      <el-tab-pane class="profile__tab" label="Settings" name="fourth">
+      <el-tab-pane class="profile__tab" label="Настройки" name="fourth">
         <PatientProfileSettings :patientProfile="patientProfile" />
       </el-tab-pane>
     </el-tabs>

@@ -1,9 +1,9 @@
 <template>
   <el-tabs type="card" v-model="activeName">
-    <el-tab-pane label="History" name="first">
+    <el-tab-pane label="История" name="first">
       <History :oldVisits="oldVisits" />
     </el-tab-pane>
-    <el-tab-pane label="Future" name="second">
+    <el-tab-pane label="Запись" name="second">
       <Future :newVisits="newVisits" />
     </el-tab-pane>
   </el-tabs>

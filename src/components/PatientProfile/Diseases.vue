@@ -1,11 +1,11 @@
 <template>
   <el-table class="table" :data="diseases" style="width: 100%">
     <el-table-column type="index" label="№" min-width="50"> </el-table-column>
-    <el-table-column prop="name" label="name" min-width="150">
+    <el-table-column prop="name" label="Название" min-width="150">
     </el-table-column>
-    <el-table-column prop="start_date" label="start" min-width="100">
+    <el-table-column prop="start_date" label="Начало" min-width="100">
     </el-table-column>
-    <el-table-column prop="end_date" label="end" min-width="100">
+    <el-table-column prop="end_date" label="Конец" min-width="100">
     </el-table-column>
   </el-table>
 </template>

@@ -1,11 +1,11 @@
 <template>
   <el-table class="table" :data="oldVisits" style="width: 100%">
     <el-table-column type="index" label="№"> </el-table-column>
-    <el-table-column prop="result" label="result"> </el-table-column>
+    <el-table-column prop="result" label="Результат"> </el-table-column>
     <el-table-column prop="recipe" label="Рецепт"> </el-table-column>
     <el-table-column prop="doctorName" label="Имя врача"> </el-table-column>
-    <el-table-column prop="dateAndTime" label="date"> </el-table-column>
-    <el-table-column label="actions">
+    <el-table-column prop="dateAndTime" label="Дата"> </el-table-column>
+    <el-table-column label="Действия">
       <router-link :to="{ name: 'addReview' }">
         <el-button icon="el-icon-star-off" size="small">Отзыв</el-button>
       </router-link>

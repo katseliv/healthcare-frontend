@@ -6,9 +6,9 @@
       :router="routerMode"
       default-active="/authorization/login"
     >
-      <el-menu-item index="/authorization/login"> Login </el-menu-item>
+      <el-menu-item index="/authorization/login"> Войти </el-menu-item>
       <el-menu-item index="/authorization/registration">
-        Registration
+        Регистрация
       </el-menu-item>
     </el-menu>
   </el-header>
