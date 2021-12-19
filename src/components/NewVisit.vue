@@ -23,6 +23,7 @@
       <el-col :span="11">
         <el-form-item prop="date1">
           <el-date-picker
+              v-model="pickedDate"
               type="date"
               placeholder="Выберите дату"
               style="width: 100%"
@@ -63,7 +64,7 @@
 
 <script>
 import {doctorAPI} from "@/api/EventService";
-import {defineComponent} from "vue";
+import {defineComponent, reactive, toRefs} from "vue";
 
 export default defineComponent({
   data() {
@@ -77,6 +78,7 @@ export default defineComponent({
       chosenSpec: "",
       chosenDoctor: "",
       specialities_pulled: [],
+      pickedDate:""
     };
   },
   async created() {
@@ -89,23 +91,36 @@ export default defineComponent({
       return response.data;
     });
     this.doctors = doctors;
-  },
+    const state = reactive({
+      disabledDate(time) {
+        return time.getTime() > Date.now()
+      },
+    })
 
-  methods: {
-    onSubmit() {
-      console.log("click");
-    },
-    docPicked(event) {
-      doctorAPI.getSpecialitiesByDoctorId(event.id).then((response) => {
-        this.specialities = response.data.map((element) => {
-          return this.specialities_pulled.find(eeee => {
-            return eeee.id === element.id;
-          });
-        })
-      });
+    return {
+      ...toRefs(state),
     }
   },
-});
+
+  methods:
+      {
+        onSubmit() {
+          console.log("click");
+        }
+        ,
+        docPicked(event) {
+          doctorAPI.getSpecialitiesByDoctorId(event.id).then((response) => {
+            this.specialities = response.data.map((element) => {
+              return this.specialities_pulled.find(eeee => {
+                return eeee.id === element.id;
+              });
+            })
+          });
+        }
+      }
+  ,
+})
+;
 </script>
 
 <style lang="css" scoped>
