@@ -18,6 +18,7 @@ const adminProfile = {
 		updateAdminProfile(context: any, id: number) {
 			adminAPI.getAdminById(id)
 				.then((response: any) => {
+					// invokes mutation
 					context.commit('UPDATE_ADMIN_PROFILE', response.data);
 				})
 				.catch((error: any) => {

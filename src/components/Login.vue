@@ -10,6 +10,7 @@
     class="form"
   >
     <h2>Логин</h2>
+    
     <el-form-item prop="username" label="Имя пользователя">
       <el-input
         name="username"
@@ -42,7 +43,7 @@ import { mapState } from "vuex";
 export default defineComponent({
   data() {
     return {
-      rules: {
+      rules: { // свойства формы
         username: [
           {
             required: true,
@@ -65,7 +66,7 @@ export default defineComponent({
       this.$store.dispatch("login", this.formData);
     },
   },
-  computed: {
+  computed: { // вычисляемые свойства
     ...mapState(["loginModule"]),
   },
 });

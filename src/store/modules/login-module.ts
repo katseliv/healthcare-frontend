@@ -14,6 +14,7 @@ const loginModule = {
     error: ""
   }),
   mutations: {
+    // actions are not synchronized mutations yes
     SET_LOGIN(state: any, value: any) {
       state.formData = value;
     },

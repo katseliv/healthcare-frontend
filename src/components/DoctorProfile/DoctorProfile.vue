@@ -29,6 +29,7 @@
       </el-tab-pane>
       <el-tab-pane label="Результаты осмотра" name="second">
         <Report />
+        // ToDo: какая-то фигня 
       </el-tab-pane>
       <el-tab-pane
         class="profile__tab flex"
