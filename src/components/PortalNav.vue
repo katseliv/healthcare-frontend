@@ -8,6 +8,7 @@
     >
       <el-menu-item index="/portal/main-screen"> Главная </el-menu-item>
       <el-menu-item index="/portal/profile"> Профиль </el-menu-item>
+      <el-menu-item index="/portal/system-settings"> Настройки системы </el-menu-item>
       <el-menu-item
         index="/portal/new-visit"
         v-if="loginModule.role === 'PATIENT'"

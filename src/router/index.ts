@@ -10,7 +10,7 @@ import NewVisit from "../components/NewVisit.vue"
 import Profile from "../views/Profile.vue"
 import ReviewForm from "../components/ReviewForm.vue"
 import Report from "../components/DoctorProfile/Report.vue"
-
+import SysSettings from "../components/SysSettings.vue"
 
 
 
@@ -39,6 +39,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'newVisit',
         component: NewVisit
       },
+      {
+        path: 'system-settings',
+        name: 'system-settings',
+        component: SysSettings
+      }
     ]
   },
   {

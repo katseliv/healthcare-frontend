@@ -75,6 +75,9 @@ export const adminAPI = {
     postDoctor(data: any) {
         return apiClient.post('/doctors', { ...data })
     },
+    postAllergy(data: any){
+        return apiClient.post('/allergies', {...data})
+    }
 }
 
 // const EventService = {
