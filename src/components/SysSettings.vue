@@ -12,7 +12,7 @@
     <el-form-item label="Название" prop="allergy_name">
       <el-input type="email" v-model="creation.name"></el-input>
     </el-form-item>
-    <el-form-item label="Описание симптомов (не работает)" prop="allergy_description">
+    <el-form-item label="Описание симптомов (просто для красоты)" prop="allergy_description">
       <el-input type="email" v-model="creation.description"></el-input>
     </el-form-item>
 
@@ -48,20 +48,20 @@ export default {
     };
   },
   async created() {
-    this.allAllergies = await adminAPI
-        .getAllergies()
-        .then((response) => {
-          return response.data;
-        });
+    // this.allAllergies = await adminAPI
+    //     .getAllergies()
+    //     .then((response) => {
+    //       return response.data;
+    //     });
   },
   methods: {
     async onSubmit() {
       const regData = this.creation;
       const data = {
         name: regData.name,
-        description: regData.description,
+        //description: regData.description,
       };
-      adminAPI.postAdmin(data);
+      adminAPI.postAllergy(data);
     }
   },
 };
