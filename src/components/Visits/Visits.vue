@@ -9,49 +9,38 @@
   </el-tabs>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
+import { mapState, mapActions, mapGetters } from "vuex";
+
 import Future from "./Future.vue";
 import History from "./History.vue";
+import Visit from "@/models/visit.model";
+import { patientAPI } from "@/api/EventService";
 
 export default defineComponent({
+  async created() {
+    this.appointments = await patientAPI
+      .getVisitByPatientId(this.loginModule.id, )
+      .then((responce) => {
+        return responce.data;
+      });
+    const allAppointments = await patientAPI
+      .getVisitsByPatientId(this.loginModule.id)
+      .then((response) => {
+        return response.data;
+      });
+
+    for (let i = 0; i < this.appointments.length; i++) {
+      this.appointments[i].name = allAppointments.find(
+        (item: any) => item.id == this.appointments[i].id
+      ).name;
+    }
+  },
   data() {
     return {
       activeName: "first",
-      appointments: [
-        {
-          id: 0,
-          doctorName: "Иванов И.И.",
-          result: "",
-          recipe: "",
-          dateAndTime: "11.09.2021 18:30",
-          status: "new",
-        },
-        {
-          id: 1,
-          doctorName: "Сидоров В.К.",
-          result: "Простуда",
-          recipe: "Аспирин 7 дней 1 таблетка в день",
-          dateAndTime: "05.09.2021 15:30",
-          status: "old",
-        },
-        {
-          id: 2,
-          doctorName: "Фёдоров Д.С.",
-          result: "Травма колена",
-          recipe: "Тейпинг",
-          dateAndTime: "06.09.2021 17:30",
-          status: "old",
-        },
-        {
-          id: 3,
-          doctorName: "Петров Д.Б.",
-          result: "string",
-          recipe: "string",
-          dateAndTime: "13.09.2021 16:00",
-          status: "new",
-        },
-      ],
+      appointments: [] as Visit[],
     };
   },
   components: {
