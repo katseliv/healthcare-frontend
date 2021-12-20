@@ -23,6 +23,9 @@ export const authAPI = {
 }
 
 export const patientAPI = {
+    postPatient(data: any) {
+        return apiClient.post('/patients', { ...data })
+    },
     getPatientById(id: number) {
         return apiClient.get(`/patients/${id}`)
     },
@@ -35,15 +38,18 @@ export const patientAPI = {
     getPatientAllergies(id: number) {
         return apiClient.get(`/patients/${id}/allergies`)
     },
+    postVisitByPatientId(patientId: number, data: any){
+        return apiClient.post(`/patients/${patientId}/appointments`, { ...data })
+    },
+    getVisitByPatientId(patientId: number, id: number){
+        return apiClient.get(`/patients/${patientId}/appointments/${id}`)
+    },
     getVisitsByPatientId(patientId: number) {
-        return apiClient.get(`/appointments?patientId=${patientId}`)
+        return apiClient.get(`/patients/${patientId}/appointments`)
     },
-    deleteVisitById(id: number) {
+    deleteVisitById(patientId: number, id: number) {
         console.log(id);
-        return apiClient.delete(`/appointments/${id}`)
-    },
-    postPatient(data: any) {
-        return apiClient.post('/patients', { ...data })
+        return apiClient.delete(`/patients/${patientId}/appointments/${id}`)
     },
 }
 
@@ -62,7 +68,10 @@ export const doctorAPI = {
     },
     getSpecialitiesByDoctorId(doctorId: number) {
         return apiClient.get(`/doctors/${doctorId}/specialities`)
-    }
+    },
+    putVisitById(id: number, visitData: any) {
+        return apiClient.put(`/doctors/${id}/appointments`, visitData)
+    },
 }
 
 export const adminAPI = {
@@ -76,64 +85,3 @@ export const adminAPI = {
         return apiClient.post('/doctors', { ...data })
     },
 }
-
-// const EventService = {
-//     login(formData: any) {
-//         const data = new FormData();
-//         data.set('username', formData.username);
-//         data.set('password', formData.password);
-//         return apiClient.post('/user/login', data);
-//     },
-//     deleteSlot(dayId: number) {
-//         return apiClient.delete(`/schedule/${dayId}`);
-//     },
-//     getPatientById(id: number) {
-//         return apiClient.get(`/patients/${id}`)
-//     },
-//     putPatientById(id: number, patientData: any) {
-//         return apiClient.put(`/patients/${id}`, patientData)
-//     },
-//     getPatientDiseases(id: number) {
-//         return apiClient.get(`/patients/${id}/diseases`)
-//     },
-//     getPatientAllergies(id: number) {
-//         return apiClient.get(`/patients/${id}/allergies`)
-//     },
-//     getVisitsByPatientId(patientId: number) {
-//         return apiClient.get(`/appointments?patientId=${patientId}`)
-//     },
-//     deleteVisitById(id: number) {
-//         console.log(id);
-//         return apiClient.delete(`/appointments/${id}`)
-//     },
-//     getDoctors() {
-//         return apiClient.get(`/doctors`);
-//     },
-//     getDoctorById(id: number) {
-//         return apiClient.get(`/doctors/${id}`)
-//     },
-//     getAdminById(id: number) {
-//         return apiClient.get(`/admins/${id}`)
-//     },
-//     postAdmin(data: any) {
-//         return apiClient.post('/admins', { ...data })
-//     },
-//     postDoctor(data: any) {
-//         return apiClient.post('/doctors', { ...data })
-//     },
-//     postPatient(data: any) {
-//         return apiClient.post('/patients', { ...data })
-//     },
-//     postSpecialityByDoctorId(doctorId: number, specialityData: any) {
-//         return apiClient.post(`/doctors/${doctorId}/specialities`, specialityData)
-//     },
-//     getSpecialities() {
-//         return apiClient.get('/specialities')
-//     },
-//     getSpecialitiesByDoctorId(doctorId: number) {
-//         return apiClient.get(`/doctors/${doctorId}/specialities`)
-//     }
-
-// }
-
-// export default EventService

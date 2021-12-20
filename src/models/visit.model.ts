@@ -1,6 +1,4 @@
-
-
-import EntityModel from '@/models/entity.model';
+import EntityModel from './entity.model';
 
 interface Visit extends EntityModel {
 	doctorId: number,
@@ -8,7 +6,7 @@ interface Visit extends EntityModel {
 	result: string | undefined,
 	recipe: string | undefined,
 	dateAndTime: string,
-	status: string
+	isTaken: string
 }
 
 export default Visit
